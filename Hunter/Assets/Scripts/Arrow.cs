@@ -29,12 +29,12 @@ public class Arrow : MonoBehaviour, IBow
     private void OnMouseUp()
     {
         BowEventManager.instance.ChangeStateToOnReleaseArrow();
-        ReleaseArrow();
+        BowEventManager.OnGrabArrow -= GrabArrow;
+        BowEventManager.OnDraggingArrow -= DragArrow;
     }
 
     public void GrabArrow()
     {
-        Rb.isKinematic = true;
     }
 
     public void DragArrow()

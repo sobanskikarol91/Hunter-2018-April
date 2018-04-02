@@ -62,6 +62,6 @@ public class BowEventManager : MonoBehaviour
 
     public void ChangeStateToOnIdle()
     {
-        state = BowState.OnReleaseArrow;
+        state = BowState.OnIdle;
     }
 }

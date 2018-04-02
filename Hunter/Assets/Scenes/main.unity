@@ -113,6 +113,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &98155695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 98155696}
+  m_Layer: 0
+  m_Name: ArrowSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &98155696
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 98155695}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.002, y: 0.019, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1503398555}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &272751730
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,9 +184,9 @@ GameObject:
   m_Component:
   - component: {fileID: 388604302}
   m_Layer: 0
-  m_Name: ArrowSpawnPoint
+  m_Name: CenterBowStringHook
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -464,11 +492,11 @@ SpringJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -1.4217303, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 0
-  m_Distance: 0.43399996
+  m_Distance: 0.005
   m_DampingRatio: 0
-  m_Frequency: 2
+  m_Frequency: 10
 --- !u!50 &1006317417
 Rigidbody2D:
   serializedVersion: 4
@@ -554,13 +582,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a296894984d2e94ca515c987356e2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joint: {fileID: 1006317416}
   minDistanceToUnhookArrow: 0.1
   rb: {fileID: 1006317417}
   maxTenseDistance: 2.2
-  arrowSpawnPoint: {fileID: 388604302}
+  arrowSpawnPoint: {fileID: 98155696}
   arrowPrefab: {fileID: 1846081417871520, guid: b436d19d3eb6ab240be1b04bdca41991,
     type: 2}
-  joint: {fileID: 1006317416}
 --- !u!4 &1503398555
 Transform:
   m_ObjectHideFlags: 0
@@ -574,6 +602,7 @@ Transform:
   m_Children:
   - {fileID: 272751731}
   - {fileID: 1611237497}
+  - {fileID: 98155696}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
