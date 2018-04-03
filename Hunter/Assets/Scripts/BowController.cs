@@ -14,11 +14,14 @@ public class BowController : MonoBehaviour, IBow
     [SerializeField] float maxTenseDistance = 1f;
     [SerializeField] Transform arrowSpawnPoint;
     [SerializeField] GameObject arrowPrefab;
-
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] Clip tenseSnd;
+    [SerializeField] Clip shotSnd;
 
     private void Start()
     {
         GameManager.StartGame += SpawnArrow;
+        BowEventManager.OnGrabArrow += GrabArrow;
         BowEventManager.OnDraggingArrow += DragArrow;
         BowEventManager.OnReleaseArrow += ReleaseArrow;
     }
@@ -56,11 +59,27 @@ public class BowController : MonoBehaviour, IBow
         }
 
         DiscotectedArrowFromJoint();
+    }   
+
+    private void UpdateJointAnchorToSpawnArrowPoint()
+    {
+        joint.anchor = arrowSpawnPoint.localPosition;
+    }
+
+    private void OnMouseDown()
+    {
+        BowEventManager.instance.ChangeStateToOnGrabbingArrow();
+    }
+
+    private void OnMouseUp()
+    {
+        BowEventManager.instance.ChangeStateToOnReleaseArrow();
     }
 
     public void GrabArrow()
     {
-        //TODO: snd, animation
+        Debug.Log("snd");
+        audioSource.Play(tenseSnd);
     }
 
     public void DragArrow()
@@ -69,25 +88,11 @@ public class BowController : MonoBehaviour, IBow
         UpdateJointAnchorToSpawnArrowPoint();
     }
 
-    private void UpdateJointAnchorToSpawnArrowPoint()
-    {
-        joint.anchor = arrowSpawnPoint.localPosition;
-    }
-
     public void ReleaseArrow()
     {
+        audioSource.Play(shotSnd);
         StartCoroutine(CheckPossibilityToUnhookArrow());
         // TEST
         Invoke("SpawnArrow", 0.1f);
-    }
-
-    private void OnMouseDown()
-    {
-        BowEventManager.instance.ChangeStateToOnDraggingArrow();
-    }
-
-    private void OnMouseUp()
-    {
-        BowEventManager.instance.ChangeStateToOnReleaseArrow();
     }
 }

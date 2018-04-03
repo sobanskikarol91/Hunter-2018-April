@@ -28,12 +28,12 @@ public class BowEventManager : MonoBehaviour
             case BowState.OnDraggingArrow:
                 {
                     OnDraggingArrow();
-                    ChangeStateToOnDraggingArrow();
                     break;
                 }
             case BowState.OnGrabArrow:
                 {
                     OnGrabArrow();
+                    ChangeStateToOnDraggingArrow();
                     break;
                 }
             case BowState.OnReleaseArrow:
