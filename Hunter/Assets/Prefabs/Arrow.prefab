@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 070c04a01368f3a478614c352daf1101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider: {fileID: 61901812655803322}
   bowController: {fileID: 0}
 --- !u!212 &212424851607128792
 SpriteRenderer:

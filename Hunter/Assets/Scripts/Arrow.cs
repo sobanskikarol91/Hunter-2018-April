@@ -4,8 +4,9 @@ public class Arrow : MonoBehaviour, IBow
 {
     public Rigidbody2D Rb { get; private set; }
 
+    [SerializeField] Collider2D collider;
     private float originDistanceToBow;
-    public BowController bowController;
+    [HideInInspector] public BowController bowController;
 
     private void Awake()
     {
@@ -17,20 +18,8 @@ public class Arrow : MonoBehaviour, IBow
         BowEventManager.OnGrabArrow += GrabArrow;
         BowEventManager.OnDraggingArrow += DragArrow;
         BowEventManager.OnReleaseArrow += ReleaseArrow;
-
         originDistanceToBow = transform.position.magnitude;
-    }
-
-    private void OnMouseDown()
-    {
-        BowEventManager.instance.ChangeStateToOnDraggingArrow();
-    }
-
-    private void OnMouseUp()
-    {
-        BowEventManager.instance.ChangeStateToOnReleaseArrow();
-        BowEventManager.OnGrabArrow -= GrabArrow;
-        BowEventManager.OnDraggingArrow -= DragArrow;
+        collider.enabled = false;
     }
 
     public void GrabArrow()
@@ -53,6 +42,8 @@ public class Arrow : MonoBehaviour, IBow
 
     public void ReleaseArrow()
     {
+        BowEventManager.OnGrabArrow -= GrabArrow;
+        BowEventManager.OnDraggingArrow -= DragArrow;
         Rb.isKinematic = false;
     }
 }

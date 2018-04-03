@@ -81,4 +81,14 @@ public class BowController : MonoBehaviour, IBow
         // TEST
         Invoke("SpawnArrow", 0.2f);
     }
+
+    private void OnMouseDown()
+    {
+        BowEventManager.instance.ChangeStateToOnDraggingArrow();
+    }
+
+    private void OnMouseUp()
+    {
+        BowEventManager.instance.ChangeStateToOnReleaseArrow();
+    }
 }
