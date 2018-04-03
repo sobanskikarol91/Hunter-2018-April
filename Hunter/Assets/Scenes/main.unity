@@ -279,7 +279,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 490716989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 9.35, y: 4.82, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -495,7 +495,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 0
-  m_Distance: 0.005
+  m_Distance: 0.01
   m_DampingRatio: 0
   m_Frequency: 10
 --- !u!50 &1006317417
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joint: {fileID: 1006317416}
-  minDistanceToUnhookArrow: 0.01
+  minDistanceToUnhookArrow: 0.05
   rb: {fileID: 1006317417}
   maxTenseDistance: 2.2
   arrowSpawnPoint: {fileID: 98155696}

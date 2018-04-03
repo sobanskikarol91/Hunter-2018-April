@@ -46,7 +46,6 @@ public class BowController : MonoBehaviour, IBow
 
     IEnumerator CheckPossibilityToUnhookArrow()
     {
-
         Func<Vector2> CurrentArrowDirectionToBow = () => { return arrowSpawnPoint.position - CurrentUsingArrow.transform.position; };
         Vector2 lastDirection = CurrentArrowDirectionToBow();
 
@@ -79,7 +78,7 @@ public class BowController : MonoBehaviour, IBow
     {
         StartCoroutine(CheckPossibilityToUnhookArrow());
         // TEST
-        Invoke("SpawnArrow", 0.2f);
+        Invoke("SpawnArrow", 0.1f);
     }
 
     private void OnMouseDown()
