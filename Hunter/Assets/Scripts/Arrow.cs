@@ -17,8 +17,7 @@ public class Arrow : MonoBehaviour, IBow
 
     private float originDistanceToBow;
     private Coroutine rotateCorutine;
-
-
+    
 
     private void Awake()
     {
@@ -88,13 +87,18 @@ public class Arrow : MonoBehaviour, IBow
             StopCoroutine(rotateCorutine);
             Rb.bodyType = RigidbodyType2D.Static;
             animator.SetTrigger("vibrations");
+            ChangeColor();
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == TagManager.bow || collision.gameObject.tag == TagManager.arrow) return;
         audioSource.Play(swishClip);
+    }
+
+    void ChangeColor()
+    {
+        arrowSprite.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 40);
     }
 }
