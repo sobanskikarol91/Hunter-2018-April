@@ -4,20 +4,26 @@ using System.Collections;
 public class Arrow : MonoBehaviour, IBow
 {
     public Rigidbody2D Rb { get; private set; }
-    string obstacleTag = "Obstacle";
+
     [SerializeField] Transform arrowSprite;
-    [SerializeField] Collider2D arrowCollider;
+    [SerializeField] Collider2D hitCollider;
+    [SerializeField] Collider2D missCollider;
     [SerializeField] AudioSource audioSource;
     [SerializeField] Animator animator;
-    private float originDistanceToBow;
+    [SerializeField] Clip swishClip;
+    [SerializeField] Clip hitClip;
+
     [HideInInspector] public BowController bowController;
-    Coroutine rotateCorutine;
+
+    private float originDistanceToBow;
+    private Coroutine rotateCorutine;
+
 
 
     private void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
-        arrowCollider.enabled = false;
+        EnableColliders(false);
     }
 
     private void Start()
@@ -26,6 +32,22 @@ public class Arrow : MonoBehaviour, IBow
         BowEventManager.OnDraggingArrow += DragArrow;
         BowEventManager.OnReleaseArrow += ReleaseArrow;
         originDistanceToBow = transform.position.magnitude;
+    }
+
+    IEnumerator Rotate()
+    {
+        while (true)
+        {
+            Vector3 dir = Rb.velocity;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            arrowSprite.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            yield return null;
+        }
+    }
+
+    void EnableColliders(bool state)
+    {
+        missCollider.enabled = hitCollider.enabled = state;
     }
 
     public void GrabArrow()
@@ -51,31 +73,28 @@ public class Arrow : MonoBehaviour, IBow
         BowEventManager.OnDraggingArrow -= DragArrow;
         BowEventManager.OnReleaseArrow -= ReleaseArrow;
 
-        arrowCollider.enabled = true;
+        EnableColliders(true);
         Rb.isKinematic = false;
         transform.SetParent(null);
         rotateCorutine = StartCoroutine(Rotate());
     }
 
-    IEnumerator Rotate()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        while (true)
+        if (collision.transform.tag == TagManager.obstacle)
         {
-            Vector3 dir = Rb.velocity;
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            arrowSprite.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            yield return null;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.tag == obstacleTag)
-        {
-            audioSource.Play();
+            EnableColliders(false);
+            audioSource.Play(hitClip);
             StopCoroutine(rotateCorutine);
             Rb.bodyType = RigidbodyType2D.Static;
             animator.SetTrigger("vibrations");
         }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == TagManager.bow || collision.gameObject.tag == TagManager.arrow) return;
+        audioSource.Play(swishClip);
     }
 }

@@ -48,7 +48,6 @@ public class BowString : MonoBehaviour, IBow
     public void ReleaseArrow()
     {
         //TODO: smooth bowstring return to orginal position
-        //TODO: string vibrations
         ResetArrowHolderSpotPosition();
         UpdateLineRenderer();
     }

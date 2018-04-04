@@ -91,7 +91,7 @@ public class BowController : MonoBehaviour, IBow
     {
         audioSource.Play(shotSnd);
         StartCoroutine(CheckPossibilityToUnhookArrow());
-        // TEST
+        //TODO: TEST
         Invoke("SpawnArrow", 0.1f);
     }
 }

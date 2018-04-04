@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 430357450}
   - component: {fileID: 430357449}
-  - component: {fileID: 430357448}
   - component: {fileID: 430357447}
   m_Layer: 0
   m_Name: Obstacle (2)
@@ -140,23 +139,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &430357448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 430357446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb68dab1f6e7c284e93fbacf6f27d19a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &430357449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -369,7 +357,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1060127657}
   - component: {fileID: 1060127656}
-  - component: {fileID: 1060127655}
   - component: {fileID: 1060127654}
   m_Layer: 0
   m_Name: Obstacle (1)
@@ -387,23 +374,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &1060127655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1060127653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb68dab1f6e7c284e93fbacf6f27d19a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1060127656
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -513,64 +489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff34ff28ec9e41469e0bc99c3a83a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1275232258
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4328800382966174, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 4328800382966174, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4328800382966174, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4328800382966174, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4328800382966174, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4328800382966174, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4328800382966174, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4328800382966174, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1396378947674172, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4401244170466974, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 4401244170466974, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0.008464788
-      objectReference: {fileID: 0}
-    - target: {fileID: 4401244170466974, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999642
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: e77f9a578d3a62a47b9b1893bd8ffded, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1351122362
 Prefab:
   m_ObjectHideFlags: 0
@@ -648,6 +566,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1396378947674172, guid: e77f9a578d3a62a47b9b1893bd8ffded,
         type: 2}
+    - target: {fileID: 1458163386952052, guid: b2b003ae7bbffcc4eaee251936add1e8, type: 2}
+      propertyPath: m_TagString
+      value: Bow
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2b003ae7bbffcc4eaee251936add1e8, type: 2}
   m_IsPrefabParent: 0
@@ -660,7 +582,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1395332425}
   - component: {fileID: 1395332424}
-  - component: {fileID: 1395332422}
   - component: {fileID: 1395332423}
   m_Layer: 0
   m_Name: Obstacle
@@ -669,17 +590,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1395332422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1395332421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb68dab1f6e7c284e93fbacf6f27d19a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &1395332423
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -689,7 +599,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
