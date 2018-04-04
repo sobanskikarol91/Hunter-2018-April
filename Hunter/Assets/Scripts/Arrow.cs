@@ -8,9 +8,10 @@ public class Arrow : MonoBehaviour, IBow
     [SerializeField] Transform arrowSprite;
     [SerializeField] Collider2D arrowCollider;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] Animator animator;
     private float originDistanceToBow;
     [HideInInspector] public BowController bowController;
-    Coroutine rotateCorutine;   
+    Coroutine rotateCorutine;
 
 
     private void Awake()
@@ -74,6 +75,7 @@ public class Arrow : MonoBehaviour, IBow
             audioSource.Play();
             StopCoroutine(rotateCorutine);
             Rb.bodyType = RigidbodyType2D.Static;
+            animator.SetTrigger("vibrations");
         }
     }
 }
