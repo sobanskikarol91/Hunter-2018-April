@@ -355,6 +355,12 @@ MonoBehaviour:
   arrowPrefab: {fileID: 1846081417871520, guid: b436d19d3eb6ab240be1b04bdca41991,
     type: 2}
   audioSource: {fileID: 82716299471807360}
+  tenseSnd:
+    clip: {fileID: 0}
+    group: {fileID: 0}
+  shotSnd:
+    clip: {fileID: 0}
+    group: {fileID: 0}
 --- !u!114 &114934887014973936
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,8 +19,6 @@ public class BowEventManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(state);
-
         switch (state)
         {
             case BowState.OnIdle:

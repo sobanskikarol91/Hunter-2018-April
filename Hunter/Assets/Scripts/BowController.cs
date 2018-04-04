@@ -78,7 +78,6 @@ public class BowController : MonoBehaviour, IBow
 
     public void GrabArrow()
     {
-        Debug.Log("snd");
         audioSource.Play(tenseSnd);
     }
 

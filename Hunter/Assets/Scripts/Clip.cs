@@ -6,8 +6,8 @@ public class Clip
 {
     public AudioClip clip;
     public AudioMixerGroup group;
-
 }
+
 
 public static class ExtensionClip
 {

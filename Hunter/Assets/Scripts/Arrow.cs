@@ -4,14 +4,19 @@ using System.Collections;
 public class Arrow : MonoBehaviour, IBow
 {
     public Rigidbody2D Rb { get; private set; }
+    string obstacleTag = "Obstacle";
     [SerializeField] Transform arrowSprite;
-    [SerializeField] Collider2D collider;
+    [SerializeField] Collider2D arrowCollider;
+    [SerializeField] AudioSource audioSource;
     private float originDistanceToBow;
     [HideInInspector] public BowController bowController;
+    Coroutine rotateCorutine;   
+
 
     private void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
+        arrowCollider.enabled = false;
     }
 
     private void Start()
@@ -20,8 +25,6 @@ public class Arrow : MonoBehaviour, IBow
         BowEventManager.OnDraggingArrow += DragArrow;
         BowEventManager.OnReleaseArrow += ReleaseArrow;
         originDistanceToBow = transform.position.magnitude;
-        
-        collider.enabled = false;
     }
 
     public void GrabArrow()
@@ -45,9 +48,12 @@ public class Arrow : MonoBehaviour, IBow
     {
         BowEventManager.OnGrabArrow -= GrabArrow;
         BowEventManager.OnDraggingArrow -= DragArrow;
+        BowEventManager.OnReleaseArrow -= ReleaseArrow;
+
+        arrowCollider.enabled = true;
         Rb.isKinematic = false;
         transform.SetParent(null);
-        StartCoroutine(Rotate());
+        rotateCorutine = StartCoroutine(Rotate());
     }
 
     IEnumerator Rotate()
@@ -58,6 +64,16 @@ public class Arrow : MonoBehaviour, IBow
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             arrowSprite.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             yield return null;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == obstacleTag)
+        {
+            audioSource.Play();
+            StopCoroutine(rotateCorutine);
+            Rb.bodyType = RigidbodyType2D.Static;
         }
     }
 }
