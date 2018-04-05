@@ -114,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1396378947674172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.82, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4401244170466974}
@@ -213,7 +213,8 @@ AudioSource:
   m_GameObject: {fileID: 1396378947674172}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243655596392867830, guid: 0e5100f5728154d4da02c876115d4b07,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c3e8ffe56c8c3d24baed815232f2412b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -318,12 +319,12 @@ MonoBehaviour:
   missCollider: {fileID: 61892396386290300}
   audioSource: {fileID: 82620829942754696}
   animator: {fileID: 95480128651484712}
-  swishClip:
-    clip: {fileID: 8300000, guid: 3a4098568cf5e4d43961fd65b307b660, type: 3}
-    group: {fileID: 243259549693581222, guid: 0e5100f5728154d4da02c876115d4b07, type: 2}
   hitClip:
     clip: {fileID: 8300000, guid: c3e8ffe56c8c3d24baed815232f2412b, type: 3}
     group: {fileID: 243862175859484020, guid: 0e5100f5728154d4da02c876115d4b07, type: 2}
+  flyingClip:
+    clip: {fileID: 8300000, guid: be567cc7234503145aee35e6839b3765, type: 3}
+    group: {fileID: 243655596392867830, guid: 0e5100f5728154d4da02c876115d4b07, type: 2}
   trailParticle: {fileID: 198357191816988346}
   bowController: {fileID: 0}
 --- !u!198 &198357191816988346

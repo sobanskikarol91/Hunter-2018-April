@@ -7,6 +7,7 @@ public class ExpiryColor
 
     public static IEnumerator ExpirySpriteColor(SpriteRenderer sprite, float timeTakenDuringLerp = 1f)
     {
+        yield return new WaitForSeconds(0.7f);
         float _timeStartedLerping = Time.time;
         float timeSinceStarted, percentageComplete;
         Color32 startColor = sprite.color;

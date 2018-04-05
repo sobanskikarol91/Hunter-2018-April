@@ -11,6 +11,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     [SerializeField] AudioSource audioSource;
     [SerializeField] Animator animator;
     [SerializeField] Clip hitClip;
+    [SerializeField] Clip flyingClip;
     [SerializeField] ParticleSystem trailParticle;
     [HideInInspector] public BowController bowController;
 
@@ -73,6 +74,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         Rb.isKinematic = false;
         transform.SetParent(null);
         rotateCorutine = StartCoroutine(Rotate());
+        audioSource.Play(flyingClip);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
