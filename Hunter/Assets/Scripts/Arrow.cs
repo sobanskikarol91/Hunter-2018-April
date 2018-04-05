@@ -13,6 +13,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     [SerializeField] Clip hitClip;
     [SerializeField] Clip flyingClip;
     [SerializeField] ParticleSystem trailParticle;
+    [SerializeField] GameObject hitParicle;
     [HideInInspector] public BowController bowController;
 
     private float originDistanceToBow;
@@ -85,7 +86,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
             audioSource.Play(hitClip);
             StopCoroutine(rotateCorutine);
             Rb.bodyType = RigidbodyType2D.Static;
-            animator.SetBool("vibrations",true);
+            animator.SetBool("vibrations", true);
             StartCoroutine(ExpiryColor.ExpirySpriteColor(arrowSprite.GetComponent<SpriteRenderer>()));
             HitObstacle();
         }
@@ -105,7 +106,8 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     void HitObstacle()
     {
         audioSource.Play(hitClip);
-         FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Hit, transform.position);
+        FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Hit, transform.position);
+        hitParicle.SetActive(true);
     }
 
     void RestoreSpriteColor()
@@ -115,6 +117,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 
     public void PrepareObjectToSpawn()
     {
+        hitParicle.SetActive(false);
         trailParticle.Stop();
         EnableColliders(false);
         originDistanceToBow = transform.position.magnitude;
