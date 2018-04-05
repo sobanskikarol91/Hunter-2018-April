@@ -15,7 +15,7 @@ public class FloatingTextManager : MonoBehaviour
     [SerializeField] GameObject canvas;
     Vector3 displayTxtPos;
 
-   float balisticShotDistance = 18f;
+    float balisticShotDistance = 18f;
     public void ShowFloatingText(FLOATING_TXT type, Vector3 pos)
     {
         displayTxtPos = pos;
@@ -43,11 +43,16 @@ public class FloatingTextManager : MonoBehaviour
     void Hit()
     {
         float distance = Vector2.Distance(displayTxtPos, GameManager.instance.Player.position);
-        Debug.Log(distance);
         if (distance > balisticShotDistance)
+        {
             ShowFloatingText("Ballistic");
+            CameraShaker.instance.ShakeCamere(1.4f, 0.32f);
+        }
         else
+        {
             ShowFloatingText("NiceShot");
+            CameraShaker.instance.ShakeCamere();
+        }
     }
 
     void ShowFloatingText(string tag)
