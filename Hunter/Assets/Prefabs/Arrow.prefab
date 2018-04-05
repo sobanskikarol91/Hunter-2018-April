@@ -324,6 +324,7 @@ MonoBehaviour:
   hitClip:
     clip: {fileID: 8300000, guid: c3e8ffe56c8c3d24baed815232f2412b, type: 3}
     group: {fileID: 243862175859484020, guid: 0e5100f5728154d4da02c876115d4b07, type: 2}
+  trailParticle: {fileID: 198357191816988346}
   bowController: {fileID: 0}
 --- !u!198 &198357191816988346
 ParticleSystem:

@@ -1,0 +1,4 @@
+﻿interface IObjectPooler
+{
+    void PrepareObjectToSpawn();
+}

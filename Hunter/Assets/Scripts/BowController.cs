@@ -33,7 +33,8 @@ public class BowController : MonoBehaviour, IBow
 
     void SpawnArrow()
     {
-        CurrentUsingArrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, transform.rotation).GetComponent<Arrow>();
+        GameObject arrowGo = ObjectPoolerManager.instance.SpawnFromPool("Arrow", arrowSpawnPoint.position, transform.rotation);
+        CurrentUsingArrow = arrowGo.GetComponent<Arrow>();
         joint.connectedBody = CurrentUsingArrow.Rb;
         CurrentUsingArrow.bowController = this;
         CurrentUsingArrow.transform.SetParent(arrowSpawnPoint);
@@ -59,7 +60,7 @@ public class BowController : MonoBehaviour, IBow
         }
 
         DiscotectedArrowFromJoint();
-    }   
+    }
 
     private void UpdateJointAnchorToSpawnArrowPoint()
     {

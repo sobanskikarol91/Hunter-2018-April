@@ -9,7 +9,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector2 direction = player.position - transform.position;
         transform.position = Vector3.MoveTowards(transform.position, player.position, speed);
     }
 }

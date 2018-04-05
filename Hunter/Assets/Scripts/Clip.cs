@@ -8,7 +8,6 @@ public class Clip
     public AudioMixerGroup group;
 }
 
-
 public static class ExtensionClip
 {
     public static void Play(this AudioSource audioSource, Clip clip)

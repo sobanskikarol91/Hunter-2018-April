@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Arrow : MonoBehaviour, IBow
+public class Arrow : MonoBehaviour, IBow, IObjectPooler
 {
     public Rigidbody2D Rb { get; private set; }
 
@@ -12,25 +12,22 @@ public class Arrow : MonoBehaviour, IBow
     [SerializeField] Animator animator;
     [SerializeField] Clip swishClip;
     [SerializeField] Clip hitClip;
-
+    [SerializeField] ParticleSystem trailParticle;
     [HideInInspector] public BowController bowController;
 
     private float originDistanceToBow;
     private Coroutine rotateCorutine;
-    
 
     private void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
-        EnableColliders(false);
     }
 
-    private void Start()
+    void AddEvents()
     {
         BowEventManager.OnGrabArrow += GrabArrow;
         BowEventManager.OnDraggingArrow += DragArrow;
         BowEventManager.OnReleaseArrow += ReleaseArrow;
-        originDistanceToBow = transform.position.magnitude;
     }
 
     IEnumerator Rotate()
@@ -51,6 +48,7 @@ public class Arrow : MonoBehaviour, IBow
 
     public void GrabArrow()
     {
+        trailParticle.Play();
     }
 
     public void DragArrow()
@@ -86,8 +84,8 @@ public class Arrow : MonoBehaviour, IBow
             audioSource.Play(hitClip);
             StopCoroutine(rotateCorutine);
             Rb.bodyType = RigidbodyType2D.Static;
-            animator.SetTrigger("vibrations");
-            ChangeColor();
+            animator.SetBool("vibrations",true);
+            StartCoroutine(ExpiryColor.ExpirySpriteColor(arrowSprite.GetComponent<SpriteRenderer>()));
         }
     }
 
@@ -97,8 +95,22 @@ public class Arrow : MonoBehaviour, IBow
         audioSource.Play(swishClip);
     }
 
-    void ChangeColor()
+    void RestoreSpriteColor()
     {
-        arrowSprite.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 40);
+        arrowSprite.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    public void PrepareObjectToSpawn()
+    {
+        trailParticle.Stop();
+        EnableColliders(false);
+        originDistanceToBow = transform.position.magnitude;
+        AddEvents();
+        StopAllCoroutines();
+        Rb.bodyType = RigidbodyType2D.Kinematic;
+        RestoreSpriteColor();
+        arrowSprite.localRotation = Quaternion.Euler(Vector3.zero);
+        Rb.velocity = Vector3.zero;
+        animator.SetBool("vibrations", false);
     }
 }

@@ -16,7 +16,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Death()
     {
-        ChangeColor();
+        StartCoroutine(ExpiryColor.ExpirySpriteColor(GetComponent<SpriteRenderer>()));
         DisableCollider();
         GetComponent<EnemyMovement>().enabled = false;
     }
@@ -24,11 +24,6 @@ public class EnemyHealth : MonoBehaviour
     void DisableCollider()
     {
         GetComponent<Collider2D>().enabled = false;
-    }
-
-    void ChangeColor()
-    {
-        GetComponent<SpriteRenderer>().color = new Color32(0,0,0,40);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
