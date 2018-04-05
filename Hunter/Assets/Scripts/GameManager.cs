@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static event State StartGame;
     public static GameManager instance;
 
+    [SerializeField] Transform player;
+    public Transform Player { get { return player; } }
     private void Awake()
     {
         instance = this;

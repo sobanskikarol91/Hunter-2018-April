@@ -24,10 +24,13 @@ public class ObjectPoolerManager : MonoBehaviour
     }
 
     public List<Pool> pools = new List<Pool>();
+
     Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
+    Transform poolsSpawnHolder;
 
     private void Start()
     {
+        poolsSpawnHolder = new GameObject("PoolsSpawnHolder").transform;
         CreateObjects();
     }
 
@@ -35,6 +38,9 @@ public class ObjectPoolerManager : MonoBehaviour
     {
         foreach (Pool p in pools)
         {
+            Transform spawnHolder = new GameObject(p.tag).transform;
+            spawnHolder.SetParent(poolsSpawnHolder);
+
             Queue<GameObject> queue = new Queue<GameObject>();
 
             for (int i = 0; i < p.size; i++)
@@ -42,6 +48,7 @@ public class ObjectPoolerManager : MonoBehaviour
                 GameObject newGo = Instantiate(p.prefab);
                 newGo.SetActive(false);
                 queue.Enqueue(newGo);
+                newGo.transform.SetParent(spawnHolder);
             }
 
             poolDictionary.Add(p.tag, queue);

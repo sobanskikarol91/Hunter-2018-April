@@ -10,7 +10,6 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     [SerializeField] Collider2D missCollider;
     [SerializeField] AudioSource audioSource;
     [SerializeField] Animator animator;
-    [SerializeField] Clip swishClip;
     [SerializeField] Clip hitClip;
     [SerializeField] ParticleSystem trailParticle;
     [HideInInspector] public BowController bowController;
@@ -86,13 +85,25 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
             Rb.bodyType = RigidbodyType2D.Static;
             animator.SetBool("vibrations",true);
             StartCoroutine(ExpiryColor.ExpirySpriteColor(arrowSprite.GetComponent<SpriteRenderer>()));
+            HitObstacle();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == TagManager.bow || collision.gameObject.tag == TagManager.arrow) return;
-        audioSource.Play(swishClip);
+        MissObstacle();
+    }
+
+    void MissObstacle()
+    {
+        FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Miss, transform.position);
+    }
+
+    void HitObstacle()
+    {
+        audioSource.Play(hitClip);
+         FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Hit, transform.position);
     }
 
     void RestoreSpriteColor()
