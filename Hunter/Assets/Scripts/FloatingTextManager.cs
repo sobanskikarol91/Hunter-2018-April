@@ -16,23 +16,40 @@ public class FloatingTextManager : MonoBehaviour
     Vector3 displayTxtPos;
 
     float balisticShotDistance = 18f;
+
     public void ShowFloatingText(FLOATING_TXT type, Vector3 pos)
     {
         displayTxtPos = pos;
         switch (type)
         {
-            case FLOATING_TXT.Hit:
-                {
-                    Hit();
-                    break;
-                }
             case FLOATING_TXT.Miss:
-                {
-                    Miss();
-                    break;
-                }
+                ShowFloatingText("Miss");
+                break;
         }
     }
+
+    public void ShowFloatingText(int value, Vector3 pos)
+    {
+        displayTxtPos = pos;
+
+        if (value == 100)
+        {
+            ShowFloatingText("100");
+            CameraShaker.instance.ShakeCamere(1.4f, 0.32f);
+            return;
+        }
+        else if (value == 80)
+            ShowFloatingText("80");
+        else if (value == 60)
+            ShowFloatingText("60");
+        else if (value == 40)
+            ShowFloatingText("40");
+        else
+            ShowFloatingText("20");
+
+        CameraShaker.instance.ShakeCamere();
+    }
+
 
     private void Miss()
     {

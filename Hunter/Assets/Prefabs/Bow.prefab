@@ -56,9 +56,10 @@ GameObject:
   - component: {fileID: 114934887014973936}
   - component: {fileID: 58306694323799246}
   - component: {fileID: 82716299471807360}
+  - component: {fileID: 114854699370898752}
   m_Layer: 0
   m_Name: Bow
-  m_TagString: Untagged
+  m_TagString: Bow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,7 +251,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.75, y: 0}
@@ -266,7 +267,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -352,15 +353,27 @@ MonoBehaviour:
   rb: {fileID: 50761719618253954}
   maxTenseDistance: 2.2
   arrowSpawnPoint: {fileID: 4414910896500008}
-  arrowPrefab: {fileID: 1846081417871520, guid: b436d19d3eb6ab240be1b04bdca41991,
+  arrowPrefab: {fileID: 1396378947674172, guid: e77f9a578d3a62a47b9b1893bd8ffded,
     type: 2}
   audioSource: {fileID: 82716299471807360}
   tenseSnd:
-    clip: {fileID: 0}
-    group: {fileID: 0}
+    clip: {fileID: 8300000, guid: 433f31478c457e144b3506899ea6f5c2, type: 3}
+    group: {fileID: 243416155185858490, guid: 0e5100f5728154d4da02c876115d4b07, type: 2}
   shotSnd:
-    clip: {fileID: 0}
-    group: {fileID: 0}
+    clip: {fileID: 8300000, guid: 0861ec6593620b34d88f5a721f78928f, type: 3}
+    group: {fileID: 243199779319996516, guid: 0e5100f5728154d4da02c876115d4b07, type: 2}
+--- !u!114 &114854699370898752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458163386952052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8566f59e37e5fd4a98f863837d96328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftArrowsTxt: {fileID: 0}
 --- !u!114 &114934887014973936
 MonoBehaviour:
   m_ObjectHideFlags: 1

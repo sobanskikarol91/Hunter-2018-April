@@ -115,6 +115,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1468976233508808
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4022473435220202}
+  - component: {fileID: 61847416767857624}
+  m_Layer: 0
+  m_Name: MissCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1701839940566648
 GameObject:
   m_ObjectHideFlags: 1
@@ -157,9 +173,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4401244170466974}
-  - component: {fileID: 61892396386290300}
   m_Layer: 0
-  m_Name: MissCollider
+  m_Name: MassCenter
   m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,6 +197,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4022473435220202
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1468976233508808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4074425700212728}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4057696713344094
 Transform:
   m_ObjectHideFlags: 1
@@ -207,6 +235,7 @@ Transform:
   m_Children:
   - {fileID: 4057696713344094}
   - {fileID: 4895479138759984}
+  - {fileID: 4022473435220202}
   m_Father: {fileID: 4401244170466974}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -347,13 +376,13 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1425004600894904}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.8537694, y: -0.018491328}
+  m_Offset: {x: 1.3510119, y: 0.005961558}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -364,21 +393,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3370788, y: 0.06815755}
+  m_Size: {x: 0.04842162, y: 0.019235339}
   m_EdgeRadius: 0
---- !u!61 &61892396386290300
+--- !u!61 &61847416767857624
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1821655172898668}
+  m_GameObject: {fileID: 1468976233508808}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.5258012, y: 0}
+  m_Offset: {x: -1.31, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -389,7 +418,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09086895, y: 2.3}
+  m_Size: {x: 0.08746195, y: 2.5734046}
   m_EdgeRadius: 0
 --- !u!82 &82620829942754696
 AudioSource:
@@ -502,7 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowSprite: {fileID: 4074425700212728}
   hitCollider: {fileID: 61795048156435482}
-  missCollider: {fileID: 61892396386290300}
+  missCollider: {fileID: 61847416767857624}
   audioSource: {fileID: 82620829942754696}
   animator: {fileID: 95480128651484712}
   hitClip:
@@ -574,7 +603,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1622419315
+  randomSeed: 913158870
   InitialModule:
     serializedVersion: 3
     enabled: 1

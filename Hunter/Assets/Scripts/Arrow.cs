@@ -26,9 +26,9 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 
     void AddEvents()
     {
-        BowEventManager.OnGrabArrow += GrabArrow;
-        BowEventManager.OnDraggingArrow += DragArrow;
-        BowEventManager.OnReleaseArrow += ReleaseArrow;
+        BowEventManager.shooting.OnEnter += GrabArrow;
+        BowEventManager.shooting.OnExecute += DragArrow;
+        BowEventManager.shooting.OnExit += ReleaseArrow;
     }
 
     IEnumerator Rotate()
@@ -52,7 +52,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         trailParticle.Play();
     }
 
-    public void DragArrow()
+    public void DragArrow() 
     {
         SetArrowPositionRelativeToMouse();
     }
@@ -67,9 +67,9 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 
     public void ReleaseArrow()
     {
-        BowEventManager.OnGrabArrow -= GrabArrow;
-        BowEventManager.OnDraggingArrow -= DragArrow;
-        BowEventManager.OnReleaseArrow -= ReleaseArrow;
+        BowEventManager.shooting.OnEnter -= GrabArrow;
+        BowEventManager.shooting.OnExecute -= DragArrow;
+        BowEventManager.shooting.OnExit -= ReleaseArrow;
 
         EnableColliders(true);
         Rb.isKinematic = false;
@@ -82,6 +82,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     {
         if (collision.transform.tag == TagManager.obstacle)
         {
+            ScoreManager.instace.AddScore(collision);
             EnableColliders(false);
             audioSource.Play(hitClip);
             StopCoroutine(rotateCorutine);
@@ -106,7 +107,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     void HitObstacle()
     {
         audioSource.Play(hitClip);
-        FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Hit, transform.position);
+        //FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Hit, transform.position);
         hitParicle.SetActive(true);
     }
 

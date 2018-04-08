@@ -18,12 +18,12 @@ public class BowController : MonoBehaviour, IBow
     [SerializeField] Clip tenseSnd;
     [SerializeField] Clip shotSnd;
 
-    private void Start()
+    private void Awake()
     {
-        GameManager.StartGame += SpawnArrow;
-        BowEventManager.OnGrabArrow += GrabArrow;
-        BowEventManager.OnDraggingArrow += DragArrow;
-        BowEventManager.OnReleaseArrow += ReleaseArrow;
+        BowEventManager.shooting.OnEnter += GrabArrow;
+        BowEventManager.shooting.OnExecute += DragArrow;
+        BowEventManager.shooting.OnExit += ReleaseArrow;
+        BowEventManager.spawnArrow.OnEnter += SpawnArrow;
     }
 
     public void DiscotectedArrowFromJoint()
@@ -69,12 +69,12 @@ public class BowController : MonoBehaviour, IBow
 
     private void OnMouseDown()
     {
-        BowEventManager.instance.ChangeStateToOnGrabbingArrow();
+        BowEventManager.instance.ChangeStateToShooting();
     }
 
     private void OnMouseUp()
     {
-        BowEventManager.instance.ChangeStateToOnReleaseArrow();
+        BowEventManager.instance.FindArrowInQuiver();
     }
 
     public void GrabArrow()
@@ -92,7 +92,5 @@ public class BowController : MonoBehaviour, IBow
     {
         audioSource.Play(shotSnd);
         StartCoroutine(CheckPossibilityToUnhookArrow());
-        //TODO: TEST
-        Invoke("SpawnArrow", 0.1f);
     }
 }

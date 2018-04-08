@@ -8,14 +8,12 @@ public class BowString : MonoBehaviour, IBow
     [SerializeField] BowController bowController;
     [SerializeField] LineRenderer lineRenderer;
 
-    private void Start()
+    private void Awake()
     {
-        UpdateLineRenderer();
-
-        GameManager.StartGame += UpdateLineRenderer;
-        BowEventManager.OnGrabArrow += GrabArrow;
-        BowEventManager.OnDraggingArrow += DragArrow;
-        BowEventManager.OnReleaseArrow += ReleaseArrow;
+        BowEventManager.spawnArrow.OnEnter += UpdateLineRenderer;
+        BowEventManager.shooting.OnEnter += GrabArrow;
+        BowEventManager.shooting.OnExecute += DragArrow;
+        BowEventManager.shooting.OnExit += ReleaseArrow;
     }
 
     void UpdateLineRenderer()
@@ -36,7 +34,7 @@ public class BowString : MonoBehaviour, IBow
 
     public void GrabArrow()
     {
-        //TODO: snd + animation
+   
     }
 
     public void DragArrow()

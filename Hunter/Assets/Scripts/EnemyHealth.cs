@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    int health = 1;
+   [SerializeField] int health = 3;
 
-    void DecreaseHealth()
+    public void DecreaseHealth()
     {
         health--;
 
@@ -18,17 +18,10 @@ public class EnemyHealth : MonoBehaviour
     {
         StartCoroutine(ExpiryColor.ExpirySpriteColor(GetComponent<SpriteRenderer>()));
         DisableCollider();
-        GetComponent<EnemyMovement>().enabled = false;
     }
 
     void DisableCollider()
     {
         GetComponent<Collider2D>().enabled = false;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag != TagManager.arrow) return;
-        DecreaseHealth();
     }
 }

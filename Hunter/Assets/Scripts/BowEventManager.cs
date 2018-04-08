@@ -1,65 +1,64 @@
 ﻿using UnityEngine;
 
-
 public class BowEventManager : MonoBehaviour
 {
-    public static BowEventManager instance; 
-    public delegate void State();
-    public static event State OnGrabArrow = delegate { };
-    public static event State OnDraggingArrow = delegate { };
-    public static event State OnReleaseArrow = delegate { };
+    public static BowEventManager instance;
+    public static State idle = new State("Idle");
+    public static State spawnArrow = new State("Spawn");
+    public static State shooting = new State("Shoot");
+    public static State waitingForFallingArrow = new State("Shoot");
 
-    enum BowState { OnGrabArrow, OnDraggingArrow, OnReleaseArrow, OnIdle }
-    BowState state = BowState.OnIdle;
+    [SerializeField] public Quiver quiver;
 
-    private void Start()
+    private StateMachine stateMachine = new StateMachine();
+
+    private void Awake()
     {
         instance = this;
     }
 
+    private void Start()
+    {
+        Invoke("StartGame", .1f);
+    }
+
+    void StartGame()
+    {
+        stateMachine.ChangeState(spawnArrow);
+    }
+
     private void Update()
     {
-        switch (state)
-        {
-            case BowState.OnIdle:
-                    break;
-            case BowState.OnDraggingArrow:
-                {
-                    OnDraggingArrow();
-                    break;
-                }
-            case BowState.OnGrabArrow:
-                {
-                    OnGrabArrow();
-                    ChangeStateToOnDraggingArrow();
-                    break;
-                }
-            case BowState.OnReleaseArrow:
-                {
-                    OnReleaseArrow();
-                    ChangeStateToOnIdle();
-                    break;
-                }
-        }
+        stateMachine.ExecuteCurrentState();
     }
 
-    public void ChangeStateToOnDraggingArrow()
+    public void ChangeStateToShooting()
     {
-        state = BowState.OnDraggingArrow;
+        if (stateMachine.CurrentState == spawnArrow)
+            stateMachine.ChangeState(shooting);
     }
 
-    public void ChangeStateToOnGrabbingArrow()
+    public void ChangeStateToIdle()
     {
-        state = BowState.OnGrabArrow;
+        stateMachine.ChangeState(idle);
     }
 
-    public void ChangeStateToOnReleaseArrow()
+    public void ChangeStateToOnSpawning()
     {
-        state = BowState.OnReleaseArrow;
+        Invoke("Spawn", 0.2f);
     }
 
-    public void ChangeStateToOnIdle()
+    void Spawn()
     {
-        state = BowState.OnIdle;
+        stateMachine.ChangeState(spawnArrow);
+    }
+
+    public void FindArrowInQuiver()
+    {
+        ChangeStateToIdle();
+        if (quiver.LeftArrows > 0)
+            ChangeStateToOnSpawning();
+        else
+            stateMachine.ChangeState(waitingForFallingArrow);
     }
 }
