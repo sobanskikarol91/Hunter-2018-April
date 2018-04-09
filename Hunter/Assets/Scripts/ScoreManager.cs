@@ -6,10 +6,12 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instace;
 
-    [SerializeField] int score;
     [SerializeField] Text scoreTxt;
     [SerializeField] int pointsFactor = 2;
 
+    public int Score { get; private set; }
+    public int NegativeScore { get; private set; }
+    public int TotalScore { get { return Score + NegativeScore; } }
 
     private void Awake()
     {
@@ -23,8 +25,8 @@ public class ScoreManager : MonoBehaviour
         int currentScore = CountScore(other);
         FloatingTextManager.instance.ShowFloatingText(currentScore, other.contacts[0].point);
 
-        score += currentScore;
-        scoreTxt.text = "Score: " + score.ToString();
+        Score += currentScore;
+        scoreTxt.text = "Score: " + Score.ToString();
     }
 
     int CountScore(Collision2D other)
@@ -33,7 +35,6 @@ public class ScoreManager : MonoBehaviour
         float hightFromCenter = other.gameObject.GetComponent<Collider2D>().bounds.extents.y;
         float percent = distanceFromCenter * 100 / hightFromCenter;
 
-        Debug.Log(percent);
         if (percent < 20) return 50 * pointsFactor;
         else if (percent < 40) return 40 * pointsFactor;
         else if (percent < 60) return 30 * pointsFactor;

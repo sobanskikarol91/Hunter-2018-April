@@ -14,6 +14,8 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     [SerializeField] Clip flyingClip;
     [SerializeField] ParticleSystem trailParticle;
     [SerializeField] GameObject hitParicle;
+    [SerializeField] float onBecomeInvisibleTime = 0.5f;
+
     [HideInInspector] public BowController bowController;
 
     private float originDistanceToBow;
@@ -52,7 +54,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         trailParticle.Play();
     }
 
-    public void DragArrow() 
+    public void DragArrow()
     {
         SetArrowPositionRelativeToMouse();
     }
@@ -129,5 +131,25 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         arrowSprite.localRotation = Quaternion.Euler(Vector3.zero);
         Rb.velocity = Vector3.zero;
         animator.SetBool("vibrations", false);
+    }
+
+    void OnEnable()
+    {
+        GameManager.instance.RegisterArrow(this);
+    }
+
+    private void OnBecameInvisible()
+    {
+        Invoke("DisableArrowAfterTime", onBecomeInvisibleTime);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.UnregisterArrow(this);
+    }
+
+    void DisableArrowAfterTime()
+    {
+        gameObject.SetActive(false);
     }
 }

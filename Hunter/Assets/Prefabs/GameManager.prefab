@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114738204334960430}
   - component: {fileID: 114437409602079426}
   - component: {fileID: 114219242377128434}
+  - component: {fileID: 114754599871955700}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -55,7 +56,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec5e03fc954fdf45888cd8b3f88d3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsFactor: 10
+  scoreTxt: {fileID: 0}
+  pointsFactor: 2
 --- !u!114 &114437409602079426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,8 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d5e0cc681a72c4eb46e3cf70c5d795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  scoreTxt: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &114738204334960430
 MonoBehaviour:
@@ -112,12 +112,29 @@ MonoBehaviour:
   - tag: Miss
     prefab: {fileID: 1018650600463522, guid: d75c3ea113d26a64a8e4759e19337944, type: 2}
     size: 3
-  - tag: Ballistic
-    prefab: {fileID: 1865038585516436, guid: d3a9a831603cbe04b934c7619d3bbf3e, type: 2}
-    size: 3
-  - tag: 0-20
+  - tag: 100
     prefab: {fileID: 1891450053809404, guid: baf2cb42d24d5b145b58193bf4230453, type: 2}
     size: 3
-  - tag: NiceShot
-    prefab: {fileID: 1214379217399488, guid: 3403a134bdbe95f4aafdd50fd2586b1f, type: 2}
+  - tag: 80
+    prefab: {fileID: 1891450053809404, guid: 7c44637e485b73b48b0771cd1d6d4364, type: 2}
     size: 3
+  - tag: 60
+    prefab: {fileID: 1891450053809404, guid: 86343559509e86f41a76735f61c90cec, type: 2}
+    size: 3
+  - tag: 40
+    prefab: {fileID: 1891450053809404, guid: f61d33917698694458a60c757acde98a, type: 2}
+    size: 3
+  - tag: 20
+    prefab: {fileID: 1891450053809404, guid: cff0e8c5b7a2a2a4682962a015154a58, type: 2}
+    size: 3
+--- !u!114 &114754599871955700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1908965865195262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fe13a9b6cdf504ebb8705eea323bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
