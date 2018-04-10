@@ -11,17 +11,20 @@ public class Lvl : MonoBehaviour
     public bool IsUnloked { get { return isUnloked; } set { button.interactable = !(isUnloked = value); } }
 
     public GameObject lvlPrefab;
-     GameObject createdLvl;
+    GameObject createdLvl;
+
+    int gainedstars = 0;
 
     private void Start()
     {
         IsUnloked = isUnloked;
     }
 
+    /*
     int CheckHowManyStarsRecivedPlayer(int playerScore)
     {
         return stars.Where(t => t.CheckIfPlayerGainedStar(playerScore)).Count();
-    }
+    }*/
 
     public void CreateLvl()
     {
@@ -34,5 +37,17 @@ public class Lvl : MonoBehaviour
     public void EraseCreatedLvl()
     {
         Destroy(createdLvl);
+    }
+
+    public bool CheckIfPlayerReciveStar(float playerScore)
+    {
+        if (gainedstars >= stars.Length) return false;
+        if (playerScore >= stars[gainedstars].scoreToGainStar)
+        {
+            gainedstars++;
+            return true;
+        }
+
+        return false;
     }
 }

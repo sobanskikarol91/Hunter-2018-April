@@ -11,10 +11,15 @@ public class GameOver : MonoBehaviour
     [SerializeField] Text negativeScore;
     [SerializeField] Text totalScore;
     [SerializeField] AudioSource scoreCounterSnd;
+    [SerializeField] StarController[] stars;
+
+
+    private int lightedStars = 0;
 
     void DisplayScore(float score)
     {
         scoreTxt.text = "Score: +" + score.ToString();
+        CheckIfLightStar(score);
     }
 
     void DisplayNegativeScore(float score)
@@ -24,20 +29,17 @@ public class GameOver : MonoBehaviour
 
     void DisplayTotalSore()
     {
-        totalScore.text = "Total Score: " + ScoreManager.instace.TotalScore.ToString();
-    }
-
-    private void OnEnable()
-    {
-        StartCoroutine(DisplayAllScore());
+        totalScore.text = "Total Score: " + ScoreManager.instance.TotalScore.ToString();
     }
 
     IEnumerator DisplayAllScore()
     {
-        int score = ScoreManager.instace.Score;
-        int negativeScore = ScoreManager.instace.NegativeScore;
+        int score = ScoreManager.instance.Score;
+        int negativeScore = ScoreManager.instance.NegativeScore;
 
-        scoreCounterSnd.Play();
+        if (score + negativeScore > 0)
+            scoreCounterSnd.Play();
+
         PlayScoreCounter(score, DisplayScore);
         yield return new WaitForSeconds(durationNegativeScoreRun);
 
@@ -53,8 +55,21 @@ public class GameOver : MonoBehaviour
         StartCoroutine(scoreCounterDuration());
     }
 
+
     void CheckIfLightStar(float score)
     {
-         
+        if (lightedStars == stars.Length) return;
+
+        if (LvlManager.SelectedLvl.CheckIfPlayerReciveStar(score))
+        {
+            stars[lightedStars].LightStar();
+            lightedStars++;
+        }
+    }
+
+    private void OnEnable()
+    {
+        lightedStars = 0;
+        StartCoroutine(DisplayAllScore());
     }
 }

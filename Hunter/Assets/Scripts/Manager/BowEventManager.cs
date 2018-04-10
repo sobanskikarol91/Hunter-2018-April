@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-public class BowEventManager : MonoBehaviour
+public class BowEventManager : Singleton<BowEventManager>
 {
-    public static BowEventManager instance;
     public static State idle = new State("Idle");
     public static State spawnArrow = new State("Spawn");
     public static State shooting = new State("Shoot");
@@ -11,11 +10,6 @@ public class BowEventManager : MonoBehaviour
     [SerializeField] public Quiver quiver;
 
     private StateMachine stateMachine = new StateMachine();
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     private void Start()
     {

@@ -2,16 +2,8 @@
 using UnityEngine;
 
 
-public class FloatingTextManager : MonoBehaviour
+public class FloatingTextManager : Singleton<FloatingTextManager>
 {
-    #region Singleton
-    public static FloatingTextManager instance;
-
-    private void Awake()
-    {
-        instance = this;
-    }
-    #endregion
     [SerializeField] GameObject canvas;
     Vector3 displayTxtPos;
 

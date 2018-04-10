@@ -1,20 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-
-public class ObjectPoolerManager : MonoBehaviour
+public class ObjectPoolerManager : Singleton<ObjectPoolerManager>
 {
-    #region Singleton
-    public static ObjectPoolerManager instance;
-
-    private void Awake()
-    {
-        instance = this;
-    }
-
-    #endregion
-
     [System.Serializable]
     public class Pool
     {

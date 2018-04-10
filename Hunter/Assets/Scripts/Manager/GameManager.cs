@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
 
     public static Transform Player { get; private set; }
@@ -10,16 +10,7 @@ public class GameManager : MonoBehaviour
 
     List<EnemyController> enemies = new List<EnemyController>();
     List<Arrow> activeArrows = new List<Arrow>();
-
-    #region Singleton
-    public static GameManager instance;
-
-    private void Awake()
-    {
-        instance = this;
-    }
-    #endregion
-
+    
     #region Observer patterns
     public void RegisterEnemy(EnemyController enemy) { enemies.Add(enemy); }
     public void RegisterArrow(Arrow arrow) { activeArrows.Add(arrow); }
@@ -47,13 +38,13 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        AudioManager.ins.PlayLoseSnd();
+        AudioManager.instance.PlayLoseSnd();
         MenuManager.instance.SwitchToMenu(MENU.GameOver);
     }
 
     public void LvlCompleted()
     {
-        AudioManager.ins.PlayWinSnd();
+        AudioManager.instance.PlayWinSnd();
         MenuManager.instance.SwitchToMenu(MENU.GameOver);
     }
 }

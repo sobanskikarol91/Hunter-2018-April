@@ -1,17 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
-    public static AudioManager ins;
     [SerializeField] AudioSource audioSource;
     [SerializeField] Clip winSnd;
     [SerializeField] Clip loseSnd;
-
-    private void Awake()
-    {
-        ins = this;
-    }
 
     public void PlayWinSnd()
     {

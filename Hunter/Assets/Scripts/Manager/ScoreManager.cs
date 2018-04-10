@@ -1,22 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : Singleton<ScoreManager>
 {
-    public static ScoreManager instace;
-
     [SerializeField] Text scoreTxt;
     [SerializeField] int pointsFactor = 2;
 
     public int Score { get; private set; }
     public int NegativeScore { get; private set; }
     public int TotalScore { get { return Score + NegativeScore; } }
-
-    private void Awake()
-    {
-        instace = this;
-    }
 
     public void AddScore(Collision2D other)
     {

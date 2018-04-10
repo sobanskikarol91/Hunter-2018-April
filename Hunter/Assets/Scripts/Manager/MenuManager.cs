@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class MenuManager : MonoBehaviour
+public class MenuManager : Singleton<MenuManager>
 {
     [System.Serializable]
     public class Menu
@@ -19,8 +19,9 @@ public class MenuManager : MonoBehaviour
     GameObject currentMenu;
     GameObject previousMenu;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         instance = this;
         CreateDictionary();
         DisableMenus();

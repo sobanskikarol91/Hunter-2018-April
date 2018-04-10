@@ -13,7 +13,7 @@ public class LvlManager : MonoBehaviour
         LvlHolder = new GameObject("LvlHolder").transform;
     }
 
-    public void DestrotLvl()
+    public void DestroyLvl()
     {
         SelectedLvl.EraseCreatedLvl();
     }
