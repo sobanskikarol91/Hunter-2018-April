@@ -21,7 +21,11 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(Collision2D other)
     {
         if (other.gameObject.tag != TagManager.obstacle) return;
-        if (other.contacts.Length == 0) return;
+        if (other.contacts.Length == 0)
+        {
+            Debug.LogError(other.contacts.Length);
+            return;
+        }
         int currentScore = CountScore(other);
         FloatingTextManager.instance.ShowFloatingText(currentScore, other.contacts[0].point);
 

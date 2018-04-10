@@ -24,7 +24,7 @@ public class GameOver : MonoBehaviour
 
     void DisplayTotalSore()
     {
-        totalScore.text = "TotalScore: " + ScoreManager.instace.TotalScore.ToString();
+        totalScore.text = "Total Score: " + ScoreManager.instace.TotalScore.ToString();
     }
 
     private void OnEnable()
@@ -51,5 +51,10 @@ public class GameOver : MonoBehaviour
     {
         Func<IEnumerator> scoreCounterDuration = () => IEnumeratorMethods.Lerp(0, score, changeScoreTime, txtToDispaly);
         StartCoroutine(scoreCounterDuration());
+    }
+
+    void CheckIfLightStar(float score)
+    {
+         
     }
 }

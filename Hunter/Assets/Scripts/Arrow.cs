@@ -85,13 +85,14 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         if (collision.transform.tag == TagManager.obstacle)
         {
             ScoreManager.instace.AddScore(collision);
-            EnableColliders(false);
             audioSource.Play(hitClip);
             StopCoroutine(rotateCorutine);
             Rb.bodyType = RigidbodyType2D.Static;
             animator.SetBool("vibrations", true);
             StartCoroutine(ExpiryColor.ExpirySpriteColor(arrowSprite.GetComponent<SpriteRenderer>()));
             HitObstacle();
+            EnableColliders(false);
+            collision.gameObject.GetComponent<EnemyController>().ArrowHit();
         }
     }
 

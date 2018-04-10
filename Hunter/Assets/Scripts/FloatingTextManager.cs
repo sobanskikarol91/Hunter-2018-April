@@ -59,7 +59,7 @@ public class FloatingTextManager : MonoBehaviour
 
     void Hit()
     {
-        float distance = Vector2.Distance(displayTxtPos, GameManager.instance.Player.position);
+        float distance = Vector2.Distance(displayTxtPos, GameManager.Player.position);
         if (distance > balisticShotDistance)
         {
             ShowFloatingText("Ballistic");

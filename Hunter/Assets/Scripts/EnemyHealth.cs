@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     {
         StartCoroutine(ExpiryColor.ExpirySpriteColor(GetComponent<SpriteRenderer>()));
         DisableCollider();
+
     }
 
     void DisableCollider()

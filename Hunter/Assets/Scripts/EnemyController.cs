@@ -11,9 +11,8 @@ public class EnemyController : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void ArrowHit()
     {
-        if (collision.gameObject.tag != TagManager.arrow) return;
         enemyHealth.DecreaseHealth();
         GameManager.instance.UnregisterEnemy(this);
     }

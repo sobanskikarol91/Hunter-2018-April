@@ -1,30 +1,60 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class MenuManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class Menu
+    {
+        public GameObject menu;
+        public MENU type;
+    }
+
     public static MenuManager instance;
 
-    [SerializeField] GameObject gameOver;
-    [SerializeField] float gameOverShowDuration = 2f;
+    [SerializeField] Menu[] menuList;
+    [SerializeField] Dictionary<MENU, GameObject> menuDictionary = new Dictionary<MENU, GameObject>();
+    GameObject currentMenu;
+    GameObject previousMenu;
+
     private void Awake()
     {
         instance = this;
+        CreateDictionary();
         DisableMenus();
+        SwitchToMenu(MENU.SelectLvl);
+    }
+    
+    void CreateDictionary()
+    {
+        foreach (Menu m in menuList)
+            menuDictionary.Add(m.type, m.menu);
     }
 
     void DisableMenus()
     {
-        gameOver.SetActive(false);
+        for (int i = 0; i < menuDictionary.Count; i++)
+            menuDictionary.ElementAt(i).Value.SetActive(false);
     }
 
-    public void SwitchToGameOver()
+    public void SwitchToMenu(MENU showMenu)
     {
-        Invoke("GameOver", gameOverShowDuration);
+        if(currentMenu != null)
+        {
+            previousMenu = currentMenu;
+            currentMenu.SetActive(false);
+        }
+        currentMenu = menuDictionary[showMenu];
+        currentMenu.SetActive(true);
     }
 
-    void GameOver()
+    public void SwitchToSelectLvl()
     {
-        gameOver.SetActive(true);
+        SwitchToMenu(MENU.SelectLvl);
     }
 }
+
+public enum MENU { GameOver, Game, SelectLvl }
+

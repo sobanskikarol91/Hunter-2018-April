@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Transform player;
-    public Transform Player { get { return player; } }
+
+    public static Transform Player { get; private set; }
+    [SerializeField] Quiver quiver;
+
 
     List<EnemyController> enemies = new List<EnemyController>();
     List<Arrow> activeArrows = new List<Arrow>();
-    [SerializeField] Quiver quiver;
 
     #region Singleton
     public static GameManager instance;
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
         if (activeArrows.Count == 0 && quiver.IsEmpty())
             GameOver();
     }
-    
+
     public void UnregisterEnemy(EnemyController enemy)
     {
         enemies.Remove(enemy);
@@ -39,16 +40,20 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    private void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("Bow").transform;
+    }
 
     public void GameOver()
     {
         AudioManager.ins.PlayLoseSnd();
-        MenuManager.instance.SwitchToGameOver();
+        MenuManager.instance.SwitchToMenu(MENU.GameOver);
     }
 
     public void LvlCompleted()
     {
         AudioManager.ins.PlayWinSnd();
-        MenuManager.instance.SwitchToGameOver();
+        MenuManager.instance.SwitchToMenu(MENU.GameOver);
     }
 }
