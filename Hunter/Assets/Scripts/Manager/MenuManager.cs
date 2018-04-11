@@ -15,14 +15,14 @@ public class MenuManager : Singleton<MenuManager>
     [SerializeField] Menu[] menuList;
     [SerializeField] Dictionary<MENU, GameObject> menuDictionary = new Dictionary<MENU, GameObject>();
     GameObject currentMenu;
-    GameObject previousMenu;
+    //GameObject previousMenu;
 
     protected override void Awake()
     {
         base.Awake();
         CreateDictionary();
         DisableMenus();
-        SwitchToMenu(MENU.SelectLvl);
+        SwitchToMenu(MENU.LvlsPanel);
     }
     
     void CreateDictionary()
@@ -41,7 +41,7 @@ public class MenuManager : Singleton<MenuManager>
     {
         if(currentMenu != null)
         {
-            previousMenu = currentMenu;
+            //previousMenu = currentMenu;
             currentMenu.SetActive(false);
         }
         currentMenu = menuDictionary[showMenu];
@@ -50,9 +50,14 @@ public class MenuManager : Singleton<MenuManager>
 
     public void SwitchToSelectLvl()
     {
-        SwitchToMenu(MENU.SelectLvl);
+        SwitchToMenu(MENU.LvlsPanel);
+    }
+
+    public void LvlRestart()
+    {
+        currentMenu.SetActive(false);
     }
 }
 
-public enum MENU { GameOver, Game, SelectLvl }
+public enum MENU { GameOver, Game, LvlsPanel }
 

@@ -28,6 +28,7 @@ public class LvlButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        lvlSetting.ResetObject();
         LvlManager.instance.CreateLvl(lvlSetting);
     }
 }

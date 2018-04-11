@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Lvl", menuName = "Lvl")]
-public class LvlSetting : ScriptableObject
+public class LvlSetting : ScriptableObject, IReset
 {
     public int[] StarsRequireScore { get { return starsRequireScore; } }
     public int ArrowsAmount { get { return arrowAmount; } }
@@ -16,8 +16,9 @@ public class LvlSetting : ScriptableObject
     [SerializeField] private int maxScore = 0;
     [SerializeField] GameObject prefab;
     [SerializeField] private bool isLvlLocked = true;
-
     [SerializeField] int gainedStars;
+
+    // TODO is lvl completed
     public int GainedStars { get { return gainedStars; } }
 
     public bool CheckIfPlayerReciveStar(float playerScore)
@@ -32,5 +33,10 @@ public class LvlSetting : ScriptableObject
         }
 
         return false;
+    }
+
+    public void ResetObject()
+    {
+        gainedStars = 0;
     }
 }

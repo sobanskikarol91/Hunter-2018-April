@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, IReset
 {
-   [SerializeField] int health = 3;
+    [SerializeField] int health = 3;
+    SpriteRenderer spriteRenderer;
+
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public void DecreaseHealth()
     {
@@ -16,13 +22,19 @@ public class EnemyHealth : MonoBehaviour
 
     private void Death()
     {
-        StartCoroutine(ExpiryColor.ExpirySpriteColor(GetComponent<SpriteRenderer>()));
-        DisableCollider();
-
+        GetComponent<Collider2D>().enabled = false;
+        StartCoroutine(ExpiryColor.ExpirySpriteColor(spriteRenderer));
+        EnableCollider(false);
     }
 
-    void DisableCollider()
+    void EnableCollider(bool state)
     {
-        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Collider2D>().enabled = state;
+    }
+
+    public void ResetObject()
+    {
+        spriteRenderer.color = Color.white;
+        EnableCollider(true);
     }
 }

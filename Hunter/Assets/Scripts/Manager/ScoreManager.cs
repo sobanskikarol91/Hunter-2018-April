@@ -37,4 +37,10 @@ public class ScoreManager : Singleton<ScoreManager>
         else if (percent < 80) return 20 * pointsFactor;
         else return 10 * pointsFactor;
     }
+
+    public void ResetScore()
+    {
+        Score = 0; 
+        NegativeScore = 0;
+    }
 }

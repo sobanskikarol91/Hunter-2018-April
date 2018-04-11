@@ -24,7 +24,15 @@ public class LvlManager : Singleton<LvlManager>
     {
         SelectedLvl = lvlSetting;
         createdLvl = Instantiate(lvlSetting.Prefab);
-        createdLvl.transform.SetParent(LvlManager.LvlHolder);
+        createdLvl.transform.SetParent(LvlHolder);
         MenuManager.instance.SwitchToMenu(MENU.Game);
+    }
+
+    public void LvlRestart()
+    {
+        SelectedLvl.ResetObject();
+
+        IReset[] reset = createdLvl.GetComponentsInChildren<IReset>();
+        reset.ForEach(t => t.ResetObject());
     }
 }

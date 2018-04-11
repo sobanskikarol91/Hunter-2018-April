@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class StarController : MonoBehaviour 
+public class StarController : MonoBehaviour, IReset
 {
     Animator animator;
     Image img;
@@ -21,5 +21,15 @@ public class StarController : MonoBehaviour
         animator.SetBool("Light", true);
         img.color = destinyColor;
         if(withSound) audioSource.Play();
+    }
+
+    public void ResetObject()
+    {
+        img.color = new Color32 (70,70,70,80);
+    }
+
+    private void OnDisable()
+    {
+        ResetObject();
     }
 }

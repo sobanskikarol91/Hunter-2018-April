@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class GameOver : MonoBehaviour
+public class GameOver : MonoBehaviour, IReset
 {
     [SerializeField] float changeScoreTime;
     [SerializeField] float durationNegativeScoreRun = .2f;
@@ -37,6 +37,8 @@ public class GameOver : MonoBehaviour
         int score = ScoreManager.instance.Score;
         int negativeScore = ScoreManager.instance.NegativeScore;
         int totalScore = score + negativeScore;
+        ScoreManager.instance.ResetScore();
+        // TODO: send score package
         if (score + negativeScore > 0)
             scoreCounterSnd.Play();
 
@@ -67,6 +69,11 @@ public class GameOver : MonoBehaviour
     }
 
     private void OnEnable()
+    {
+        ResetObject();
+    }
+
+    public void ResetObject()
     {
         lightedStars = 0;
         StartCoroutine(DisplayAllScore());

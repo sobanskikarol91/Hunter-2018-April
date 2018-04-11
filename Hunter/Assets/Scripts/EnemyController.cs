@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IReset
 {
     EnemyHealth enemyHealth;
 
@@ -15,5 +15,10 @@ public class EnemyController : MonoBehaviour
     {
         enemyHealth.DecreaseHealth();
         GameManager.instance.UnregisterEnemy(this);
+    }
+
+    public void ResetObject()
+    {
+        GameManager.instance.RegisterEnemy(this);
     }
 }
