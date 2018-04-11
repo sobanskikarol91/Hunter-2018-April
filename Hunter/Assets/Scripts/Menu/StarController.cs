@@ -7,8 +7,7 @@ public class StarController : MonoBehaviour
     Image img;
     AudioSource audioSource;
 
-    [SerializeField] Color32 destinyColor;
-    [SerializeField] Color32 startColor;
+    [SerializeField] Color32 destinyColor = new Color32(255,255,0,255);
 
     private void Awake()
     {
@@ -17,15 +16,10 @@ public class StarController : MonoBehaviour
         img = GetComponent<Image>();
     }
 
-    public void LightStar()
+    public void LightStar(bool withSound)
     {
-        animator.Play("LightStar", -1, 0f);
+        animator.SetBool("Light", true);
         img.color = destinyColor;
-        audioSource.Play();
-    }
-
-    void OnEnable()
-    {
-        img.color = startColor;
+        if(withSound) audioSource.Play();
     }
 }

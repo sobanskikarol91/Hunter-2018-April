@@ -12,8 +12,6 @@ public class MenuManager : Singleton<MenuManager>
         public MENU type;
     }
 
-    public static MenuManager instance;
-
     [SerializeField] Menu[] menuList;
     [SerializeField] Dictionary<MENU, GameObject> menuDictionary = new Dictionary<MENU, GameObject>();
     GameObject currentMenu;
@@ -22,7 +20,6 @@ public class MenuManager : Singleton<MenuManager>
     protected override void Awake()
     {
         base.Awake();
-        instance = this;
         CreateDictionary();
         DisableMenus();
         SwitchToMenu(MENU.SelectLvl);

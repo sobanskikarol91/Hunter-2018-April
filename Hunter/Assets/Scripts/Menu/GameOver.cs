@@ -19,7 +19,6 @@ public class GameOver : MonoBehaviour
     void DisplayScore(float score)
     {
         scoreTxt.text = "Score: +" + score.ToString();
-        CheckIfLightStar(score);
     }
 
     void DisplayNegativeScore(float score)
@@ -27,16 +26,17 @@ public class GameOver : MonoBehaviour
         negativeScore.text = "Loss: " + score.ToString();
     }
 
-    void DisplayTotalSore()
+    void DisplayTotalSore(float score)
     {
-        totalScore.text = "Total Score: " + ScoreManager.instance.TotalScore.ToString();
+        totalScore.text = "Total Score: " + score.ToString();
+        CheckIfLightStar(score);
     }
 
     IEnumerator DisplayAllScore()
     {
         int score = ScoreManager.instance.Score;
         int negativeScore = ScoreManager.instance.NegativeScore;
-
+        int totalScore = score + negativeScore;
         if (score + negativeScore > 0)
             scoreCounterSnd.Play();
 
@@ -44,9 +44,9 @@ public class GameOver : MonoBehaviour
         yield return new WaitForSeconds(durationNegativeScoreRun);
 
         PlayScoreCounter(negativeScore, DisplayNegativeScore);
-        yield return new WaitForSeconds(scoreCounterSnd.clip.length);
+        yield return new WaitForSeconds(durationNegativeScoreRun);
 
-        DisplayTotalSore();
+        PlayScoreCounter(totalScore, DisplayTotalSore);
     }
 
     void PlayScoreCounter(float score, Action<float> txtToDispaly)
@@ -55,14 +55,13 @@ public class GameOver : MonoBehaviour
         StartCoroutine(scoreCounterDuration());
     }
 
-
     void CheckIfLightStar(float score)
     {
         if (lightedStars == stars.Length) return;
 
         if (LvlManager.SelectedLvl.CheckIfPlayerReciveStar(score))
         {
-            stars[lightedStars].LightStar();
+            stars[lightedStars].LightStar(true);
             lightedStars++;
         }
     }
