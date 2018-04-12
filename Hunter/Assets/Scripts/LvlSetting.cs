@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Lvl", menuName = "Lvl")]
 public class LvlSetting : ScriptableObject, IReset
 {
+    public int LvlNr { get { return lvlNr; } }
     public int[] StarsRequireScore { get { return starsRequireScore; } }
     public int ArrowsAmount { get { return arrowAmount; } }
     public int MaxScoreToGain { get { return maxScore; } }
@@ -11,6 +12,7 @@ public class LvlSetting : ScriptableObject, IReset
     public bool IsLvlLocked { get { return isLvlLocked; } set { isLvlLocked = value; } }
     public int HighestScore { get; set; }
 
+    [SerializeField] int lvlNr;
     [SerializeField] private int[] starsRequireScore = new int[3];
     [SerializeField] private int arrowAmount = 10;
     [SerializeField] private int maxScore = 0;

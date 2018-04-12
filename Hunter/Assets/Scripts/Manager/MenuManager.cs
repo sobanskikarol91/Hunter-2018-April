@@ -12,6 +12,7 @@ public class MenuManager : Singleton<MenuManager>
         public MENU type;
     }
 
+    [SerializeField] MENU firstMenuToDisplay;
     [SerializeField] Menu[] menuList;
     [SerializeField] Dictionary<MENU, GameObject> menuDictionary = new Dictionary<MENU, GameObject>();
     GameObject currentMenu;
@@ -22,7 +23,7 @@ public class MenuManager : Singleton<MenuManager>
         base.Awake();
         CreateDictionary();
         DisableMenus();
-        SwitchToMenu(MENU.LvlsPanel);
+        SwitchToMenu(firstMenuToDisplay);
     }
     
     void CreateDictionary()
@@ -59,5 +60,5 @@ public class MenuManager : Singleton<MenuManager>
     }
 }
 
-public enum MENU { GameOver, Game, LvlsPanel }
+public enum MENU { GameOver, Game, LvlsPanel, MainMenu }
 

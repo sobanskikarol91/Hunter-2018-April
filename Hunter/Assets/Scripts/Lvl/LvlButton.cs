@@ -1,34 +1,49 @@
 ﻿using UnityEngine;
-using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class LvlButton : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField] Text buttonTxt;
     [SerializeField] Button button;
     [SerializeField] StarController[] starsControllers;
-    [SerializeField] LvlSetting lvlSetting;
+
+    private LvlSetting lvlSetting;
+    public LvlSetting LvlSetting { get { return lvlSetting; } set { lvlSetting = value; LightStarsOnTile(); } }
 
     private void Start()
     {
-        button.interactable = !lvlSetting.IsLvlLocked;
+        SetLvlNrTxt();
     }
-   
 
     public void LightStarsOnTile()
     {
-        for (int i = 0; i < lvlSetting.GainedStars; i++)
+        for (int i = 0; i < LvlSetting.GainedStars; i++)
             starsControllers[i].LightStar(false);
     }
 
     private void OnEnable()
     {
+        if (LvlSetting == null) return;
+
         LightStarsOnTile();
+        SetInteractibleButton();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        lvlSetting.ResetObject();
-        LvlManager.instance.CreateLvl(lvlSetting);
+        if (!button.interactable) return;
+        LvlSetting.ResetObject();
+        LvlManager.instance.CreateLvl(LvlSetting);
+    }
+
+    void SetInteractibleButton()
+    {
+        button.interactable = !LvlSetting.IsLvlLocked;
+    }
+
+    void SetLvlNrTxt()
+    {
+        buttonTxt.text = LvlSetting.LvlNr.ToString();
     }
 }

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class LvlPrefab : MonoBehaviour, IReset
 {
     public void ResetObject()
