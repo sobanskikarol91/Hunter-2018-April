@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39c53d315c871e248b5d1be75969cadb, type: 3}
-  m_Name: Lvl 2
+  m_Name: Lvl 4
   m_EditorClassIdentifier: 
-  lvlNr: 2
+  lvlNr: 4
   starsRequireScore: c8000000f00000002c010000
   arrowAmount: 10
   maxScore: 0

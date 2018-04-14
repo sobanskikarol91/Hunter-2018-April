@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: d02151aa4454d4a42bace6a9c8c0b03e,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -403,6 +404,8 @@ MonoBehaviour:
   lvlSettingsArray:
   - {fileID: 11400000, guid: 6bd6854891b95b84aa43b3ab04413211, type: 2}
   - {fileID: 11400000, guid: 1f6294e39b22577458e57c347bd91959, type: 2}
+  - {fileID: 11400000, guid: 720f2c0e00335dd4aa9b8a04afa7c3b0, type: 2}
+  - {fileID: 11400000, guid: f6bbf8ac6c31e4645a03ca800daef14c, type: 2}
   lvlButtonPrefab: {fileID: 1624962391020812, guid: e05c62ac017223a42a067c97312e2934,
     type: 2}
   lvlButtonHolder: {fileID: 303487283}
@@ -659,7 +662,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 490716989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.98, y: 4.13, z: -10}
+  m_LocalPosition: {x: 8.23, y: 3.23, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -784,6 +787,39 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 492928729}
+--- !u!1 &543747714 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1458163386952052, guid: b2b003ae7bbffcc4eaee251936add1e8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1351122362}
+--- !u!60 &543747715
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 543747714}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.18219942, y: -0.014103636}
+      - {x: -1.0106763, y: 1.6363516}
+      - {x: -0.95105654, y: 0.30901697}
+      - {x: -0.9095124, y: -1.5876118}
 --- !u!114 &548537364 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114854699370898752, guid: b2b003ae7bbffcc4eaee251936add1e8,
@@ -1224,7 +1260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b85ce52a460c3049afb7548cf263949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeScoreTime: 3.23
   durationNegativeScoreRun: 0.2
   scoreTxt: {fileID: 45866469}
   negativeScore: {fileID: 1649116517}
@@ -1244,7 +1279,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243052816397610306, guid: 0e5100f5728154d4da02c876115d4b07,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 03c1bcbdaee014947ac1d596637d606e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d960b84a7c2be9c41b271271fba41d8b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2349,7 +2384,26 @@ Prefab:
       propertyPath: maxArrows
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 58306694323799246, guid: b2b003ae7bbffcc4eaee251936add1e8,
+        type: 2}
+      propertyPath: m_Radius
+      value: 1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007083794917856, guid: b2b003ae7bbffcc4eaee251936add1e8, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007083794917856, guid: b2b003ae7bbffcc4eaee251936add1e8, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114444845218772944, guid: b2b003ae7bbffcc4eaee251936add1e8,
+        type: 2}
+      propertyPath: maxTenseDistance
+      value: 3.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 58306694323799246, guid: b2b003ae7bbffcc4eaee251936add1e8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b2b003ae7bbffcc4eaee251936add1e8, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1351122363 stripped

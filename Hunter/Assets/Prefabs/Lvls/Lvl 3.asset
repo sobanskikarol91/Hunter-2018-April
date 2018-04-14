@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39c53d315c871e248b5d1be75969cadb, type: 3}
-  m_Name: Lvl 2
+  m_Name: Lvl 3
   m_EditorClassIdentifier: 
-  lvlNr: 2
-  starsRequireScore: c8000000f00000002c010000
+  lvlNr: 3
+  starsRequireScore: 2c0100005401000090010000
   arrowAmount: 10
   maxScore: 0
-  prefab: {fileID: 1166335281673396, guid: e8c9b746667acce4786f0299c2486e27, type: 2}
+  prefab: {fileID: 1964901437186896, guid: 68046c36f671814498493ee4887aa495, type: 2}
   isLvlLocked: 1
   gainedStars: 0
