@@ -4,11 +4,28 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 0.1f;
-    public Transform player;
+    [SerializeField] float duration = 2f;
+    [SerializeField] Transform destiny;
 
-    private void Update()
+
+    private void Start()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.position, speed);
+        StartCoroutine(SmoothMovement());
+    }
+
+
+    IEnumerator SmoothMovement()
+    {
+        Vector3 origin = transform.position;
+
+        while (true)
+        {
+            yield return StartCoroutine(IEnumeratorMethods.Lerp(origin, destiny.position, duration, AssignPosition));
+            yield return StartCoroutine(IEnumeratorMethods.Lerp(destiny.position, origin, duration, AssignPosition));
+        }
+    }
+    void AssignPosition(Vector3 newPosition)
+    {
+        transform.position = newPosition;
     }
 }

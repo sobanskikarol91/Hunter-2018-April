@@ -54,7 +54,7 @@ public class GameOver : MonoBehaviour, IReset
 
     void PlayScoreCounter(float score, Action<float> txtToDispaly)
     {
-        Func<IEnumerator> scoreCounterDuration = () => IEnumeratorMethods.Lerp(0, score, changeScoreTime, txtToDispaly);
+        Func<IEnumerator> scoreCounterDuration = () => IEnumeratorMethods.Lerp(0, score, scoreCounterSnd.clip.length, txtToDispaly);
         StartCoroutine(scoreCounterDuration());
     }
 
