@@ -41,7 +41,7 @@ public class LvlManager : Singleton<LvlManager>
             GameObject newButton = Instantiate(lvlButtonPrefab);
             newButton.GetComponent<LvlButton>().LvlSetting = lvlSettingsArray[i];
 
-            newButton.transform.SetParent(lvlButtonHolder);
+            newButton.transform.SetParent(lvlButtonHolder, false);
         }
     }
 

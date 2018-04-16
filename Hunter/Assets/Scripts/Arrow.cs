@@ -82,18 +82,17 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == TagManager.obstacle)
+        string tag = collision.transform.tag;
+        if (tag == TagManager.obstacle)
         {
-            gameObject.transform.SetParent(collision.transform);
             ScoreManager.instance.AddScore(collision);
-            audioSource.Play(hitClip);
-            StopCoroutine(rotateCorutine);
-            Rb.bodyType = RigidbodyType2D.Static;
-            animator.SetBool("vibrations", true);
+            ArrowStickInObstacle(collision);
             StartCoroutine(ExpiryColor.ExpirySpriteColor(arrowSprite.GetComponent<SpriteRenderer>()));
-            HitObstacle();
-            EnableColliders(false);
             collision.gameObject.GetComponent<EnemyController>().ArrowHit();
+        }
+        else if(tag == TagManager.block)
+        {
+            ArrowStickInObstacle(collision);
         }
     }
 
@@ -108,11 +107,17 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Miss, transform.position);
     }
 
-    void HitObstacle()
+    void ArrowStickInObstacle(Collision2D collision)
     {
+        StopCoroutine(rotateCorutine);
+        animator.SetBool("vibrations", true);
+        gameObject.transform.SetParent(collision.transform);
+        Rb.bodyType = RigidbodyType2D.Static;
+
         audioSource.Play(hitClip);
         //FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Hit, transform.position);
         hitParicle.SetActive(true);
+        EnableColliders(false);
     }
 
     void RestoreSpriteColor()

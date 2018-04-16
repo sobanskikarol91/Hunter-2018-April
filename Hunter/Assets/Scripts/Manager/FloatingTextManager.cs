@@ -67,9 +67,8 @@ public class FloatingTextManager : Singleton<FloatingTextManager>
     void ShowFloatingText(string tag)
     {
         GameObject floatingTxtGo = ObjectPoolerManager.instance.SpawnFromPool(tag, displayTxtPos, Quaternion.identity);
-        floatingTxtGo.transform.SetParent(canvas.transform);
-        floatingTxtGo.transform.position = Camera.main.WorldToScreenPoint(displayTxtPos);
-        floatingTxtGo.transform.localScale = Vector3.one;
+        floatingTxtGo.transform.SetParent(canvas.transform, false);
+        floatingTxtGo.transform.position = displayTxtPos;
     }
 }
 
