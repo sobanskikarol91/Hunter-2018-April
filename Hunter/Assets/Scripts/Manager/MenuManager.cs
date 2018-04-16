@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -57,6 +56,11 @@ public class MenuManager : Singleton<MenuManager>
     public void LvlRestart()
     {
         currentMenu.SetActive(false);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }
 
