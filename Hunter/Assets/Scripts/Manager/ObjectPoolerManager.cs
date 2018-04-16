@@ -53,6 +53,8 @@ public class ObjectPoolerManager : Singleton<ObjectPoolerManager>
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
+        if (objectToSpawn == null)
+            Debug.LogError(tag + " Was destroyed!");
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;

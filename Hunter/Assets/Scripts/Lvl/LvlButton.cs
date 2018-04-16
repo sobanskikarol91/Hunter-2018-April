@@ -25,7 +25,6 @@ public class LvlButton : MonoBehaviour, IPointerClickHandler
     private void OnEnable()
     {
         if (LvlSetting == null) return;
-
         LightStarsOnTile();
         SetInteractibleButton();
     }
@@ -42,6 +41,7 @@ public class LvlButton : MonoBehaviour, IPointerClickHandler
         button.interactable = !LvlSetting.IsLvlLocked;
     }
 
+    
     void SetLvlNrTxt()
     {
         buttonTxt.text = LvlSetting.LvlNr.ToString();

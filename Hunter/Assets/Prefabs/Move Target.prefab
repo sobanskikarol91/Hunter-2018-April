@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 70106442252572368}
   - component: {fileID: 114354561470189786}
   - component: {fileID: 114979140571075382}
+  - component: {fileID: 114055710568971934}
   m_Layer: 0
-  m_Name: Target
+  m_Name: Move Target
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +88,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.005543709}
   m_Size: {x: 0.07735226, y: 2.9815154}
   m_Direction: 0
+--- !u!114 &114055710568971934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048593897473298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dd8112ac2e32a45bafbad16c2bd2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+  destiny: {fileID: 0}
 --- !u!114 &114354561470189786
 MonoBehaviour:
   m_ObjectHideFlags: 1
