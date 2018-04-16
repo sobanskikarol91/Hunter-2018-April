@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Lvl 3
   m_EditorClassIdentifier: 
   lvlNr: 3
-  starsRequireScore: 3c0000005000000064000000
+  starsRequireScore: 8c000000a0000000c8000000
   arrowAmount: 2
   maxScore: 0
   prefab: {fileID: 1316472599968564, guid: 5d191ca7a19f183468534a00ec4ab0b4, type: 2}
   isLvlLocked: 0
-  gainedStars: 3
+  gainedStars: 0

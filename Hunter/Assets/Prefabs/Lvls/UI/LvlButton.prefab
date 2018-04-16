@@ -178,7 +178,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -190,7 +190,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -202,7 +202,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!95 &95171412412119640
 Animator:
   serializedVersion: 3
@@ -407,7 +407,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 1257122399f58e74d94260659ee32e65, type: 3}
     group: {fileID: 243800846982405238, guid: 0e5100f5728154d4da02c876115d4b07, type: 2}
   clicked:
-    clip: {fileID: 8300000, guid: 7932b650894225f468ad74bbc1ad2eb2, type: 3}
+    clip: {fileID: 8300000, guid: 262660f9ccfe7894880b4b4908c98020, type: 3}
     group: {fileID: 243472581921965672, guid: 0e5100f5728154d4da02c876115d4b07, type: 2}
 --- !u!114 &114523444002243430
 MonoBehaviour:

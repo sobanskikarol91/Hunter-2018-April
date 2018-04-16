@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-
 [RequireComponent(typeof(AudioSource))]
 public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
@@ -22,6 +21,7 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerCli
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        ExtensionAudio.PlayAudioClip(clicked, transform.position);
         SetClip(clicked);
     }
 
