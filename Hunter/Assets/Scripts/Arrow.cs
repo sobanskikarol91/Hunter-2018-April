@@ -84,6 +84,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     {
         if (collision.transform.tag == TagManager.obstacle)
         {
+            gameObject.transform.SetParent(collision.transform);
             ScoreManager.instance.AddScore(collision);
             audioSource.Play(hitClip);
             StopCoroutine(rotateCorutine);

@@ -1225,7 +1225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeScoreTime: 3.23
-  durationNegativeScoreRun: 0.2
   scoreTxt: {fileID: 45866469}
   negativeScore: {fileID: 1649116517}
   totalScore: {fileID: 928884545}

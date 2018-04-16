@@ -6,7 +6,6 @@ using System;
 public class GameOver : MonoBehaviour, IReset
 {
     [SerializeField] float changeScoreTime;
-    [SerializeField] float durationNegativeScoreRun = .2f;
     [SerializeField] Text scoreTxt;
     [SerializeField] Text negativeScore;
     [SerializeField] Text totalScore;
@@ -44,12 +43,9 @@ public class GameOver : MonoBehaviour, IReset
             scoreCounterSnd.Play();
 
         PlayScoreCounter(score, DisplayScore);
-        yield return new WaitForSeconds(durationNegativeScoreRun);
-
         PlayScoreCounter(negativeScore, DisplayNegativeScore);
-        yield return new WaitForSeconds(durationNegativeScoreRun);
-
         PlayScoreCounter(totalScore, DisplayTotalSore);
+        yield return null;
     }
 
     void PlayScoreCounter(float score, Action<float> txtToDispaly)

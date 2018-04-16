@@ -64,9 +64,7 @@ public class LvlManager : Singleton<LvlManager>
             AllLvlCompleted();
         else if (SelectedLvl.GainedStars > 0)
         {
-            Debug.Log(SelectedLvl.GainedStars + "unlocked");
             int nextIndex = lvlSettingsArray.IndexOf(SelectedLvl) + 1;
-            Debug.Log(nextIndex);
             lvlSettingsArray[nextIndex].IsLvlLocked = false;
         }
     }
