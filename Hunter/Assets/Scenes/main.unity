@@ -480,6 +480,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1f6294e39b22577458e57c347bd91959, type: 2}
   - {fileID: 11400000, guid: bfc79bdfca203da4eba56bbaca9a2a73, type: 2}
   - {fileID: 11400000, guid: 0eb5db04db2327b45843fb81033b834e, type: 2}
+  - {fileID: 11400000, guid: 150d2034a5a96194287538b9de1d5b57, type: 2}
   lvlButtonPrefab: {fileID: 1624962391020812, guid: e05c62ac017223a42a067c97312e2934,
     type: 2}
   lvlButtonHolder: {fileID: 303487283}
@@ -1876,10 +1877,10 @@ RectTransform:
   m_Father: {fileID: 1385481893}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 106.7}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370.00433, y: -162.83318}
+  m_SizeDelta: {x: 540.00867, y: 106.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079558966
 MonoBehaviour:
@@ -2938,7 +2939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1493494841
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3212,10 +3213,10 @@ RectTransform:
   m_Father: {fileID: 1385481893}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 106.7}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 370.00433, y: -488.49954}
+  m_SizeDelta: {x: 540.00867, y: 106.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570822045
 MonoBehaviour:
