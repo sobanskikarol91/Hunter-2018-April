@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class LvlPrefab : MonoBehaviour, IReset
+public class LvlPrefab : MonoBehaviour, IObjectPooler
 {
-    public void ResetObject()
+    public void PrepareObjectToSpawn()
     {
-        IReset[] reset = GetComponentsInChildren<IReset>();
-        reset.ForEach(t => t.ResetObject());
+        IObjectPooler[] reset = GetComponentsInChildren<IObjectPooler>();
+        reset.ForEach(t => t.PrepareObjectToSpawn());
     }
 }

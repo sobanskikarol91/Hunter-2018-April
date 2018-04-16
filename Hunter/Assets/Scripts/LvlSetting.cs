@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Lvl", menuName = "Lvl")]
-public class LvlSetting : ScriptableObject, IReset
+public class LvlSetting : ScriptableObject, IObjectPooler
 {
     public int LvlNr { get { return lvlNr; } }
     public int[] StarsRequireScore { get { return starsRequireScore; } }
@@ -37,7 +37,7 @@ public class LvlSetting : ScriptableObject, IReset
         return false;
     }
 
-    public void ResetObject()
+    public void PrepareObjectToSpawn()
     {
         gainedStars = 0;
     }

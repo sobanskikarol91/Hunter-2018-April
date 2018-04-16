@@ -22,7 +22,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerCli
     public void OnPointerClick(PointerEventData eventData)
     {
         ExtensionAudio.PlayAudioClip(clicked, transform.position);
-        SetClip(clicked);
     }
 
     void SetClip(Clip clip)

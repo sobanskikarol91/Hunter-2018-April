@@ -3432,6 +3432,11 @@ Prefab:
       propertyPath: menus.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114738204334960430, guid: 83f4d743fa71b1349be7acf76f176fb3,
+        type: 2}
+      propertyPath: pools.Array.size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 114754599871955700, guid: 83f4d743fa71b1349be7acf76f176fb3,
         type: 2}
       propertyPath: menuList.Array.size
@@ -3568,6 +3573,26 @@ Prefab:
         type: 2}
       propertyPath: menuList.Array.data[3].type
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738204334960430, guid: 83f4d743fa71b1349be7acf76f176fb3,
+        type: 2}
+      propertyPath: pools.Array.data[7].tag
+      value: TrampolineParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738204334960430, guid: 83f4d743fa71b1349be7acf76f176fb3,
+        type: 2}
+      propertyPath: pools.Array.data[7].prefab
+      value: 
+      objectReference: {fileID: 136674, guid: 53b3c4d8d6e171445a8a6f5936fedbf4, type: 2}
+    - target: {fileID: 114738204334960430, guid: 83f4d743fa71b1349be7acf76f176fb3,
+        type: 2}
+      propertyPath: pools.Array.data[7].size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738204334960430, guid: 83f4d743fa71b1349be7acf76f176fb3,
+        type: 2}
+      propertyPath: pools.Array.data[0].size
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83f4d743fa71b1349be7acf76f176fb3, type: 2}

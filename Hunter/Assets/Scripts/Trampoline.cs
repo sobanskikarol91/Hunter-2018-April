@@ -5,6 +5,7 @@ public class Trampoline : MonoBehaviour
 {
     AudioSource audioSource;
     Animator animator;
+    [SerializeField] GameObject particles;
 
     private void Awake()
     {
@@ -18,6 +19,8 @@ public class Trampoline : MonoBehaviour
         {
             animator.SetTrigger("Bouncy");
             audioSource.Play();
+            if (collision.contacts.Length > 0)
+                ObjectPoolerManager.instance.SpawnFromPool("TrampolineParticle", collision.contacts[0].point, Quaternion.identity);
         }
     }
 }

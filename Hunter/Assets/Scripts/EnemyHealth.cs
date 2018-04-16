@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour, IReset
+public class EnemyHealth : MonoBehaviour, IObjectPooler
 {
     [SerializeField] int health = 3;
     SpriteRenderer spriteRenderer;
@@ -32,7 +32,7 @@ public class EnemyHealth : MonoBehaviour, IReset
         GetComponent<Collider2D>().enabled = state;
     }
 
-    public void ResetObject()
+    public void PrepareObjectToSpawn()
     {
         spriteRenderer.color = Color.white;
         EnableCollider(true);

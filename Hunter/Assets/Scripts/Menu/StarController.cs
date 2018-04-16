@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class StarController : MonoBehaviour, IReset
+public class StarController : MonoBehaviour, IObjectPooler
 {
     Animator animator;
     Image img;
     AudioSource audioSource;
 
-    [SerializeField] Color32 destinyColor = new Color32(255,255,0,255);
+    [SerializeField] Color32 destinyColor = new Color32(255, 255, 0, 255);
 
     private void Awake()
     {
@@ -20,16 +20,16 @@ public class StarController : MonoBehaviour, IReset
     {
         animator.SetBool("Light", true);
         img.color = destinyColor;
-        if(withSound) audioSource.Play();
-    }
-
-    public void ResetObject()
-    {
-        img.color = new Color32 (70,70,70,80);
+        if (withSound) audioSource.Play();
     }
 
     private void OnDisable()
     {
-        ResetObject();
+        PrepareObjectToSpawn();
+    }
+
+    public void PrepareObjectToSpawn()
+    {
+        img.color = new Color32(70, 70, 70, 80);
     }
 }

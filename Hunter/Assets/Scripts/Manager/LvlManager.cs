@@ -52,10 +52,10 @@ public class LvlManager : Singleton<LvlManager>
 
     public void LvlRestart()
     {
-        SelectedLvl.ResetObject();
+        SelectedLvl.PrepareObjectToSpawn();
 
-        IReset[] reset = createdLvl.GetComponentsInChildren<IReset>();
-        reset.ForEach(t => t.ResetObject());
+        IObjectPooler[] reset = createdLvl.GetComponentsInChildren<IObjectPooler>();
+        reset.ForEach(t => t.PrepareObjectToSpawn());
     }
 
     public void UnclockNextLvl()

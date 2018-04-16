@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class GameOver : MonoBehaviour, IReset
+public class GameOver : MonoBehaviour, IObjectPooler
 {
     [SerializeField] float changeScoreTime;
     [SerializeField] Text scoreTxt;
@@ -67,10 +67,10 @@ public class GameOver : MonoBehaviour, IReset
 
     private void OnEnable()
     {
-        ResetObject();
+        PrepareObjectToSpawn();
     }
 
-    public void ResetObject()
+    public void PrepareObjectToSpawn()
     {
         lightedStars = 0;
         StartCoroutine(DisplayAllScore());

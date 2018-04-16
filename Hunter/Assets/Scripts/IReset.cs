@@ -1,4 +1,0 @@
-﻿interface IReset
-{
-    void ResetObject();
-}

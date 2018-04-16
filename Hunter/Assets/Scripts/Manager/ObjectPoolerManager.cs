@@ -55,6 +55,7 @@ public class ObjectPoolerManager : Singleton<ObjectPoolerManager>
 
         if (objectToSpawn == null)
             Debug.LogError(tag + " Was destroyed!");
+
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
