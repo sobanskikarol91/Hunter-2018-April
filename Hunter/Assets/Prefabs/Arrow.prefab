@@ -299,14 +299,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821655172898668}
-  m_LocalRotation: {x: 0, y: 0, z: 0.008464788, w: 0.9999642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.39, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4074425700212728}
   m_Father: {fileID: 4328800382966174}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.97}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4785858074764492
 Transform:
   m_ObjectHideFlags: 1
@@ -530,6 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 070c04a01368f3a478614c352daf1101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  massCenter: {fileID: 4401244170466974}
   arrowSprite: {fileID: 4074425700212728}
   hitCollider: {fileID: 61795048156435482}
   missCollider: {fileID: 61847416767857624}
@@ -543,6 +544,7 @@ MonoBehaviour:
     group: {fileID: 243655596392867830, guid: 0e5100f5728154d4da02c876115d4b07, type: 2}
   trailParticle: {fileID: 198357191816988346}
   hitParicle: {fileID: 1701839940566648}
+  onBecomeInvisibleTime: 0.5
   bowController: {fileID: 0}
 --- !u!198 &198357191816988346
 ParticleSystem:

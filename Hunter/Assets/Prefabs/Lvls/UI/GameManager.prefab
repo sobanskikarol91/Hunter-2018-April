@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d5e0cc681a72c4eb46e3cf70c5d795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  quiver: {fileID: 0}
 --- !u!114 &114738204334960430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,3 +138,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fe13a9b6cdf504ebb8705eea323bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstMenuToDisplay: 0
+  menuList: []

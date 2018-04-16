@@ -5,6 +5,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 {
     public Rigidbody2D Rb { get; private set; }
 
+    [SerializeField] Transform massCenter;
     [SerializeField] Transform arrowSprite;
     [SerializeField] Collider2D hitCollider;
     [SerializeField] Collider2D missCollider;
