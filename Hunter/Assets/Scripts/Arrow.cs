@@ -88,7 +88,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         {
             ScoreManager.instance.AddScore(collision);
             ArrowStickInObstacle(collision);
-            StartCoroutine(ExpiryColor.ExpirySpriteColor(arrowSprite.GetComponent<SpriteRenderer>()));
+            //StartCoroutine(ExpiryColor.ExpirySpriteColor(arrowSprite.GetComponent<SpriteRenderer>()));
             collision.gameObject.GetComponent<EnemyController>().ArrowHit();
         }
         else if(tag == TagManager.block)

@@ -54,7 +54,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public static void TriggetEvent(string eventName)
+    public static void TriggerEvent(string eventName)
     {
         UnityEvent thisEvent = null;
 

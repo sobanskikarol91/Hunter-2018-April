@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114160322667706270}
   - component: {fileID: 95587839496156470}
   m_Layer: 0
-  m_Name: Machine C
+  m_Name: MachineC
   m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

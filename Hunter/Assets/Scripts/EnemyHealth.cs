@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour, IObjectPooler
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     public void DecreaseHealth()
