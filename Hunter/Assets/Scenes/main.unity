@@ -481,6 +481,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bfc79bdfca203da4eba56bbaca9a2a73, type: 2}
   - {fileID: 11400000, guid: 0eb5db04db2327b45843fb81033b834e, type: 2}
   - {fileID: 11400000, guid: 150d2034a5a96194287538b9de1d5b57, type: 2}
+  - {fileID: 11400000, guid: d912effa8ab759d469004a8518a08c08, type: 2}
   lvlButtonPrefab: {fileID: 1624962391020812, guid: e05c62ac017223a42a067c97312e2934,
     type: 2}
   lvlButtonHolder: {fileID: 303487283}

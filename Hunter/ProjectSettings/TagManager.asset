@@ -58,6 +58,9 @@ TagManager:
   - name: ArrowStem
     uniqueID: 3592631837
     locked: 0
+  - name: Machine
+    uniqueID: 3247046803
+    locked: 0
   - name: UI
     uniqueID: 2807836481
     locked: 0
