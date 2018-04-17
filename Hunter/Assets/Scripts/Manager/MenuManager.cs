@@ -63,6 +63,11 @@ public class MenuManager : Singleton<MenuManager>
     {
         Application.Quit();
     }
+
+    public void SwitchToMainMenu()
+    {
+        SwitchToMenu(MENU.MainMenu);
+    }
 }
 
 public enum MENU { GameOver, Game, LvlsPanel, MainMenu, None }
