@@ -43,9 +43,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: ArrowHead
+    uniqueID: 58991099
+    locked: 0
+  - name: Arrow
+    uniqueID: 2233487803
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Particles
     uniqueID: 2764167947
+    locked: 0
+  - name: ArrowStem
+    uniqueID: 3592631837
+    locked: 0
+  - name: UI
+    uniqueID: 2807836481
     locked: 0

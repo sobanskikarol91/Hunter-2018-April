@@ -2726,7 +2726,7 @@ Prefab:
         type: 2}
       propertyPath: arrowPrefab
       value: 
-      objectReference: {fileID: 1396378947674172, guid: e77f9a578d3a62a47b9b1893bd8ffded,
+      objectReference: {fileID: 1004584570686756, guid: f41ddc08513c63a48bf7732cd01850ba,
         type: 2}
     - target: {fileID: 1458163386952052, guid: b2b003ae7bbffcc4eaee251936add1e8, type: 2}
       propertyPath: m_TagString
@@ -3909,6 +3909,12 @@ Prefab:
       propertyPath: pools.Array.data[0].size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114738204334960430, guid: 83f4d743fa71b1349be7acf76f176fb3,
+        type: 2}
+      propertyPath: pools.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 1004584570686756, guid: f41ddc08513c63a48bf7732cd01850ba,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83f4d743fa71b1349be7acf76f176fb3, type: 2}
   m_IsPrefabParent: 0
@@ -4662,7 +4668,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1487130815
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &2110740414

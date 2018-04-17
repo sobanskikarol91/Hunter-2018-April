@@ -13,7 +13,6 @@ public class BowController : MonoBehaviour, IBow
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float maxTenseDistance = 1f;
     [SerializeField] Transform arrowSpawnPoint;
-    [SerializeField] GameObject arrowPrefab;
     [SerializeField] AudioSource audioSource;
     [SerializeField] Clip tenseSnd;
     [SerializeField] Clip shotSnd;
