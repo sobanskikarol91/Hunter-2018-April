@@ -49,3 +49,4 @@ public class LvlSetting : ScriptableObject, IObjectPooler
         while (CheckIfPlayerReciveStar(totalScore)) ;
     }
 }
+
