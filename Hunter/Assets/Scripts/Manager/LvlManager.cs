@@ -34,20 +34,9 @@ public class LvlManager : Singleton<LvlManager>
         MenuManager.instance.SwitchToMenu(MENU.Game);
     }
 
-    void CreateLvlButtons()
+    public void SaveCompletedLvlData()
     {
-        for (int i = 0; i < lvlSettingsArray.Count; i++)
-        {
-            GameObject newButton = Instantiate(lvlButtonPrefab);
-            newButton.GetComponent<LvlButton>().LvlSetting = lvlSettingsArray[i];
-
-            newButton.transform.SetParent(lvlButtonHolder, false);
-        }
-    }
-
-    void SortArrayOfLvls()
-    {
-        lvlSettingsArray.OrderBy(t => t.LvlNr);
+        SelectedLvl.SaveTotalScore(ScoreManager.instance.TotalScore);
     }
 
     public void LvlRestart()
@@ -67,6 +56,22 @@ public class LvlManager : Singleton<LvlManager>
             int nextIndex = lvlSettingsArray.IndexOf(SelectedLvl) + 1;
             lvlSettingsArray[nextIndex].IsLvlLocked = false;
         }
+    }
+
+    void CreateLvlButtons()
+    {
+        for (int i = 0; i < lvlSettingsArray.Count; i++)
+        {
+            GameObject newButton = Instantiate(lvlButtonPrefab);
+            newButton.GetComponent<LvlButton>().LvlSetting = lvlSettingsArray[i];
+
+            newButton.transform.SetParent(lvlButtonHolder, false);
+        }
+    }
+
+    void SortArrayOfLvls()
+    {
+        lvlSettingsArray.OrderBy(t => t.LvlNr);
     }
 
     bool CheckIfPlayerCompletedLastLvl()

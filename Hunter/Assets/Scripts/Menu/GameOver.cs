@@ -37,7 +37,6 @@ public class GameOver : MonoBehaviour, IObjectPooler
         int negativeScore = ScoreManager.instance.NegativeScore;
         int totalScore = score + negativeScore;
 
-        ScoreManager.instance.ResetScore();
         // TODO: send score package
         if (score + negativeScore > 0)
             scoreCounterSnd.Play();

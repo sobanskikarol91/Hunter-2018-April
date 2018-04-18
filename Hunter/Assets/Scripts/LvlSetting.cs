@@ -41,4 +41,11 @@ public class LvlSetting : ScriptableObject, IObjectPooler
     {
         gainedStars = 0;
     }
+
+    public void SaveTotalScore(int totalScore)
+    {
+        Debug.Log(totalScore);
+        HighestScore = totalScore;
+        while (CheckIfPlayerReciveStar(totalScore)) ;
+    }
 }
