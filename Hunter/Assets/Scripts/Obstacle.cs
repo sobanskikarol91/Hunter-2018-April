@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Animator), typeof(AudioSource))]
-public abstract class Obstacle : MonoBehaviour
+public  class Obstacle : MonoBehaviour
 {
     protected AudioSource audioSource;
     protected Animator animator;
@@ -23,5 +23,7 @@ public abstract class Obstacle : MonoBehaviour
     {
         audioSource.Play();
         animator.SetTrigger("ArrowHit");
+        if (collision.contacts.Length > 0)
+            ObjectPoolerManager.instance.SpawnFromPool("TrampolineParticle", collision.contacts[0].point, Quaternion.identity);
     }
 }
