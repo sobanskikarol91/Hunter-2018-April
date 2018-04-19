@@ -5,8 +5,8 @@ public class BowEventManager : Singleton<BowEventManager>
     public static State idle = new State("Idle");
     public static State spawnArrow = new State("Spawn");
     public static State shooting = new State("Shoot");
-    public static State waitingForFallingArrow = new State("Shoot");
-
+    public static State waitingForFallingArrow = new State("FallingArrow");
+    public static State menu = new State("Menu");
     [SerializeField] public Quiver quiver;
 
     private StateMachine stateMachine = new StateMachine();
@@ -15,23 +15,16 @@ public class BowEventManager : Singleton<BowEventManager>
 
     private void Start()
     {
-        Invoke("StartGame", .1f);
+        spawnArrow.OnExecute += WaitForPlayerFire;
+        shooting.OnExecute += WaitForPlayerRelease;
     }
 
     private void Update()
     {
         stateMachine.ExecuteCurrentState();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartPressPosition = Input.mousePosition;
-            ChangeStateToShooting();
-        }
-        else if (Input.GetMouseButtonUp(0))
-            FindArrowInQuiver();
     }
 
-    void StartGame()
+   public void StartGame()
     {
         stateMachine.ChangeState(spawnArrow);
     }
@@ -45,6 +38,11 @@ public class BowEventManager : Singleton<BowEventManager>
     public void ChangeStateToIdle()
     {
         stateMachine.ChangeState(idle);
+    }
+
+    public void ChangeStateToMain()
+    {
+        stateMachine.ChangeState(menu);
     }
 
     public void ChangeStateToOnSpawning()
@@ -64,5 +62,20 @@ public class BowEventManager : Singleton<BowEventManager>
             ChangeStateToOnSpawning();
         else
             stateMachine.ChangeState(waitingForFallingArrow);
+    }
+
+    void WaitForPlayerFire()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartPressPosition = Input.mousePosition;
+            ChangeStateToShooting();
+        }
+    }
+
+    void WaitForPlayerRelease()
+    {
+        if (Input.GetMouseButtonUp(0))
+            FindArrowInQuiver();
     }
 }

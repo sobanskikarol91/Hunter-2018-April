@@ -45,7 +45,6 @@ public class BowController : MonoBehaviour, IBow
         Vector2 direction = BowEventManager.StartPressPosition - mousePos;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Debug.Log(BowEventManager.StartPressPosition + "Direc: " + direction + " " + angle);
         transform.eulerAngles = new Vector3(0, 0, angle);
     }
 

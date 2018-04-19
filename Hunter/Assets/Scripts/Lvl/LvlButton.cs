@@ -33,6 +33,7 @@ public class LvlButton : MonoBehaviour, IPointerClickHandler
     {
         if (!button.interactable) return;
         LvlSetting.PrepareObjectToSpawn();
+        BowEventManager.instance.StartGame();
         LvlManager.instance.CreateLvl(LvlSetting);
     }
 

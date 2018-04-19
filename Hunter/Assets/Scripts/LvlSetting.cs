@@ -20,7 +20,6 @@ public class LvlSetting : ScriptableObject, IObjectPooler
     [SerializeField] private bool isLvlLocked = true;
     [SerializeField] int gainedStars;
 
-    // TODO is lvl completed
     public int GainedStars { get { return gainedStars; } }
 
     public bool CheckIfPlayerReciveStar(float playerScore)
@@ -44,7 +43,6 @@ public class LvlSetting : ScriptableObject, IObjectPooler
 
     public void SaveTotalScore(int totalScore)
     {
-        Debug.Log(totalScore);
         HighestScore = totalScore;
         while (CheckIfPlayerReciveStar(totalScore)) ;
     }

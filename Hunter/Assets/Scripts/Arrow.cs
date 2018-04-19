@@ -64,7 +64,6 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     {
         Vector2 currentMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 startMousePos = Camera.main.ScreenToWorldPoint(BowEventManager.StartPressPosition);
-        Debug.Log(startMousePos + " " + currentMousePos);
         Vector2 directionFromMouseToBow = currentMousePos - startMousePos;
         directionFromMouseToBow = directionFromMouseToBow.ClampMagnitudeMinMax(originDistanceToBow, bowController.MaxTenseDistance);
         transform.position = directionFromMouseToBow;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 public class State
 {
-   public string name = "No name";
+    public string name = "No name";
     public delegate void StateDelegate();
     public event StateDelegate OnEnter = delegate { };
     public event StateDelegate OnExecute = delegate { };
