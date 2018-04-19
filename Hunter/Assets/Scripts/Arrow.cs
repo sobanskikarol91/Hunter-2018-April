@@ -24,6 +24,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 
     private void Awake()
     {
+
         Rb = GetComponent<Rigidbody2D>();
     }
 
@@ -66,6 +67,8 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         Vector2 startMousePos = Camera.main.ScreenToWorldPoint(BowEventManager.StartPressPosition);
         Vector2 directionFromMouseToBow = currentMousePos - startMousePos;
         directionFromMouseToBow = directionFromMouseToBow.ClampMagnitudeMinMax(originDistanceToBow, bowController.MaxTenseDistance);
+        Debug.Log("sd");
+        GameManager.instance.SetTenseTxt(directionFromMouseToBow.magnitude /  bowController.MaxTenseDistance);
         transform.position = directionFromMouseToBow;
     }
 

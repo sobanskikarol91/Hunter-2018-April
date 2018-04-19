@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-
-    public static Transform Player { get; private set; }
     [SerializeField] Quiver quiver;
-
+    [SerializeField] Text TenseTxt;
 
     List<EnemyController> enemies = new List<EnemyController>();
     List<Arrow> activeArrows = new List<Arrow>();
@@ -32,11 +31,6 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion
 
-    private void Start()
-    {
-        Player = GameObject.FindGameObjectWithTag("Bow").transform;
-    }
-
     IEnumerator LvlCompleted(bool isCompleted)
     {
         yield return new WaitForSeconds(0.5f);
@@ -49,5 +43,10 @@ public class GameManager : Singleton<GameManager>
     public void PlayerGiveUp()
     {
         StartCoroutine(LvlCompleted(false));
+    }
+
+    public void SetTenseTxt(float value)
+    {
+        TenseTxt.text = ((int) (value * 100)).ToString() + "%";
     }
 }

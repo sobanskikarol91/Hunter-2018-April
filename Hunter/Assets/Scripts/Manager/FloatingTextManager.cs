@@ -49,21 +49,6 @@ public class FloatingTextManager : Singleton<FloatingTextManager>
         ShowFloatingText("Miss");
     }
 
-    void Hit()
-    {
-        float distance = Vector2.Distance(displayTxtPos, GameManager.Player.position);
-        if (distance > balisticShotDistance)
-        {
-            ShowFloatingText("Ballistic");
-            CameraShaker.instance.ShakeCamere(1.4f, 0.32f);
-        }
-        else
-        {
-            ShowFloatingText("NiceShot");
-            CameraShaker.instance.ShakeCamere();
-        }
-    }
-
     void ShowFloatingText(string tag)
     {
         GameObject floatingTxtGo = ObjectPoolerManager.instance.SpawnFromPool(tag, displayTxtPos, Quaternion.identity);
