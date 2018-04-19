@@ -39,16 +39,17 @@ public class Rope : MonoBehaviour
 
         while (!isLineCut)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, HookPosition() - transform.position);
+            UpdateLineRenderer();
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, HookPosition() - transform.position, distance + distance/10);
 
-            if (hit.collider != null && hit.collider.tag == TagManager.arrow)
+            if (hit.collider.isTrigger && hit.collider.tag == TagManager.arrow)
             {
                 lineRenderer.enabled = false;
                 isLineCut = true;
                 joint.connectedBody = null;
             }
 
-            UpdateLineRenderer();
+
             yield return null;
         }
     }

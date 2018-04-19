@@ -53,7 +53,6 @@ public class LvlManager : Singleton<LvlManager>
             AllLvlCompleted();
         else if (SelectedLvl.GainedStars > 0)
         {
-            Debug.Log("ma wiecej gwazdek");
             int nextIndex = lvlSettingsArray.IndexOf(SelectedLvl) + 1;
             lvlSettingsArray[nextIndex].IsLvlLocked = false;
         }

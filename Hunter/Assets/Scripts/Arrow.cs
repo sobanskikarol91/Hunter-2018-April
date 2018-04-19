@@ -83,8 +83,9 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         string tag = collision.transform.tag;
-        if (tag == TagManager.obstacle)
+        if (tag == TagManager.obstacle && collision.contacts.Length >0)
         {
             ScoreManager.instance.AddScore(collision);
             ArrowStickInObstacle(collision);

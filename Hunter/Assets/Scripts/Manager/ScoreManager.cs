@@ -15,7 +15,7 @@ public class ScoreManager : Singleton<ScoreManager>
         if (other.gameObject.tag != TagManager.obstacle) return;
         if (other.contacts.Length == 0)
         {
-            Debug.LogError(other.contacts.Length);
+            Debug.LogError("No contacts in collision! ");
             return;
         }
         int currentScore = CountScore(other);

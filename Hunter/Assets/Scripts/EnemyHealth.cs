@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour, IObjectPooler
     private void Death()
     {
         GetComponent<Collider2D>().enabled = false;
-        StartCoroutine(ExpiryColor.ExpirySpriteColor(spriteRenderer));
+        //StartCoroutine(ExpiryColor.ExpirySpriteColor(spriteRenderer));
         EnableCollider(false);
     }
 

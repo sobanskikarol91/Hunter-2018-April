@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 61600239686824576}
   m_Layer: 0
   m_Name: MissCollider
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,7 +413,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06192255, y: -0.02025609}
+  m_Offset: {x: 1.1810944, y: -0.02025609}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0.04, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -424,7 +424,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4045768, y: 0.06864969}
+  m_Size: {x: 0.16623306, y: 0.06864969}
   m_EdgeRadius: 0
 --- !u!61 &61600239686824576
 BoxCollider2D:
@@ -438,7 +438,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.31, y: 0}
+  m_Offset: {x: -0.038240314, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -449,7 +449,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.08746195, y: 2.5734046}
+  m_Size: {x: 2.426453, y: 1.3743052}
   m_EdgeRadius: 0
 --- !u!82 &82160060955672226
 AudioSource:
