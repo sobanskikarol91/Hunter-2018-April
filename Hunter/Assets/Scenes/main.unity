@@ -3899,7 +3899,7 @@ Prefab:
     - target: {fileID: 114754599871955700, guid: 83f4d743fa71b1349be7acf76f176fb3,
         type: 2}
       propertyPath: firstMenuToDisplay
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114738204334960430, guid: 83f4d743fa71b1349be7acf76f176fb3,
         type: 2}

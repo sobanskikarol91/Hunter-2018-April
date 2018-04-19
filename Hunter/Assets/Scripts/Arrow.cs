@@ -34,7 +34,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         BowEventManager.shooting.OnExit += ReleaseArrow;
     }
 
-    IEnumerator Rotate()
+    IEnumerator FlyingRotate()
     {
         while (true)
         {
@@ -62,8 +62,10 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 
     void SetArrowPositionRelativeToMouse()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 directionFromMouseToBow = mousePos - (Vector2)bowController.transform.position;
+        Vector2 currentMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 startMousePos = Camera.main.ScreenToWorldPoint(BowEventManager.StartPressPosition);
+        Debug.Log(startMousePos + " " + currentMousePos);
+        Vector2 directionFromMouseToBow = currentMousePos - startMousePos;
         directionFromMouseToBow = directionFromMouseToBow.ClampMagnitudeMinMax(originDistanceToBow, bowController.MaxTenseDistance);
         transform.position = directionFromMouseToBow;
     }
@@ -77,7 +79,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         EnableColliders(true);
         Rb.isKinematic = false;
         transform.SetParent(null);
-        rotateCorutine = StartCoroutine(Rotate());
+        rotateCorutine = StartCoroutine(FlyingRotate());
         audioSource.Play(flyingClip);
     }
 
@@ -104,6 +106,20 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         MissObstacle();
     }
 
+    void OnEnable()
+    {
+        GameManager.instance.RegisterArrow(this);
+    }
+
+    private void OnBecameInvisible()
+    {
+        Invoke("DisableArrowAfterTime", onBecomeInvisibleTime);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.UnregisterArrow(this);
+    }
     void MissObstacle()
     {
         FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Miss, transform.position);
@@ -140,21 +156,6 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         arrowSprite.localRotation = Quaternion.Euler(Vector3.zero);
         Rb.velocity = Vector3.zero;
         animator.SetBool("vibrations", false);
-    }
-
-    void OnEnable()
-    {
-        GameManager.instance.RegisterArrow(this);
-    }
-
-    private void OnBecameInvisible()
-    {
-        Invoke("DisableArrowAfterTime", onBecomeInvisibleTime);
-    }
-
-    private void OnDisable()
-    {
-        GameManager.instance.UnregisterArrow(this);
     }
 
     void DisableArrowAfterTime()

@@ -16,5 +16,5 @@ MonoBehaviour:
   arrowAmount: 2
   maxScore: 0
   prefab: {fileID: 1904211658442106, guid: 86932c780a84db04eb5c9075566edba0, type: 2}
-  isLvlLocked: 1
+  isLvlLocked: 0
   gainedStars: 0

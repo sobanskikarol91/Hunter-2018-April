@@ -41,9 +41,11 @@ public class BowController : MonoBehaviour, IBow
 
     void RotateBow()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = transform.position - mousePos;
+        Vector2 mousePos = Input.mousePosition;
+        Vector2 direction = BowEventManager.StartPressPosition - mousePos;
+
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Debug.Log(BowEventManager.StartPressPosition + "Direc: " + direction + " " + angle);
         transform.eulerAngles = new Vector3(0, 0, angle);
     }
 
@@ -64,16 +66,6 @@ public class BowController : MonoBehaviour, IBow
     private void UpdateJointAnchorToSpawnArrowPoint()
     {
         joint.anchor = arrowSpawnPoint.localPosition;
-    }
-
-    private void OnMouseDown()
-    {
-        BowEventManager.instance.ChangeStateToShooting();
-    }
-
-    private void OnMouseUp()
-    {
-        BowEventManager.instance.FindArrowInQuiver();
     }
 
     public void GrabArrow()

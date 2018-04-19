@@ -11,19 +11,29 @@ public class BowEventManager : Singleton<BowEventManager>
 
     private StateMachine stateMachine = new StateMachine();
 
+    public static Vector2 StartPressPosition { get; private set; }
+
     private void Start()
     {
         Invoke("StartGame", .1f);
     }
 
-    void StartGame()
-    {
-        stateMachine.ChangeState(spawnArrow);
-    }
-
     private void Update()
     {
         stateMachine.ExecuteCurrentState();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartPressPosition = Input.mousePosition;
+            ChangeStateToShooting();
+        }
+        else if (Input.GetMouseButtonUp(0))
+            FindArrowInQuiver();
+    }
+
+    void StartGame()
+    {
+        stateMachine.ChangeState(spawnArrow);
     }
 
     public void ChangeStateToShooting()
