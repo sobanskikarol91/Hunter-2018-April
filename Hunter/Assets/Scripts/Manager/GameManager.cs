@@ -45,4 +45,9 @@ public class GameManager : Singleton<GameManager>
         MenuManager.instance.SwitchToMenu(MENU.GameOver);
         BowEventManager.instance.ChangeStateToMain();
     }
+
+    public void PlayerGiveUp()
+    {
+        StartCoroutine(LvlCompleted(false));
+    }
 }
