@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyController : MonoBehaviour, IObjectPooler
+public class EnemyController : MonoBehaviour, IObjectPooler, IArrowHitEffect
 {
     EnemyHealth enemyHealth;
 
@@ -11,14 +11,14 @@ public class EnemyController : MonoBehaviour, IObjectPooler
         enemyHealth = GetComponent<EnemyHealth>();
     }
 
-    public void ArrowHit()
-    {
-        enemyHealth.DecreaseHealth();
-        GameManager.instance.UnregisterEnemy(this);
-    }
-
     public void PrepareObjectToSpawn()
     {
         GameManager.instance.RegisterEnemy(this);
+    }
+
+    public void ArrowHitEffect()
+    {
+        enemyHealth.DecreaseHealth();
+        GameManager.instance.UnregisterEnemy(this);
     }
 }

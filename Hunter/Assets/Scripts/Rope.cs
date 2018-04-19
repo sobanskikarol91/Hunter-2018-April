@@ -17,7 +17,7 @@ public class Rope : MonoBehaviour
         joint = GetComponent<DistanceJoint2D>();
 
         SetLineRendererStartSettings();
-        StartCoroutine(CheckLineCollision());
+          StartCoroutine(CheckLineCollision());
     }
 
     void SetLineRendererStartSettings()
@@ -40,9 +40,9 @@ public class Rope : MonoBehaviour
         while (!isLineCut)
         {
             UpdateLineRenderer();
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, HookPosition() - transform.position, distance + distance/10);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, HookPosition() - transform.position, distance + distance / 10);
 
-            if (hit.collider.isTrigger && hit.collider.tag == TagManager.arrow)
+            if (hit.collider != null && hit.collider.isTrigger && hit.collider.tag == TagManager.arrow)
             {
                 lineRenderer.enabled = false;
                 isLineCut = true;

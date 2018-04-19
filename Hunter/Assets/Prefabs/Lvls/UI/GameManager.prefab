@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1908965865195262}
   m_IsPrefabParent: 1
+--- !u!1 &1163131742547938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4251327832406204}
+  - component: {fileID: 114538273854131046}
+  - component: {fileID: 114497952661097814}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1285310542433750
 GameObject:
   m_ObjectHideFlags: 1
@@ -77,6 +94,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4339455165058780}
+  - {fileID: 4251327832406204}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -92,6 +110,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4339455165058780}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4251327832406204
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1163131742547938}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4136322865446546}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4339455165058780
 Transform:
@@ -205,6 +236,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0eb5db04db2327b45843fb81033b834e, type: 2}
   - {fileID: 11400000, guid: 150d2034a5a96194287538b9de1d5b57, type: 2}
   - {fileID: 11400000, guid: d912effa8ab759d469004a8518a08c08, type: 2}
+  - {fileID: 11400000, guid: 5261722464034f74a8907aeb4b86862a, type: 2}
+  - {fileID: 11400000, guid: 130fb047ba4f0654392397a91a257b36, type: 2}
   lvlButtonPrefab: {fileID: 1624962391020812, guid: e05c62ac017223a42a067c97312e2934,
     type: 2}
   lvlButtonHolder: {fileID: 0}
@@ -274,6 +307,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quiver: {fileID: 0}
+--- !u!114 &114497952661097814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1163131742547938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!114 &114509242490166082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -286,6 +337,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quiver: {fileID: 0}
+--- !u!114 &114538273854131046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1163131742547938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
 --- !u!114 &114738204334960430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -300,7 +365,7 @@ MonoBehaviour:
   pools:
   - tag: Arrow
     prefab: {fileID: 1004584570686756, guid: f41ddc08513c63a48bf7732cd01850ba, type: 2}
-    size: 6
+    size: 100
   - tag: Miss
     prefab: {fileID: 1018650600463522, guid: d75c3ea113d26a64a8e4759e19337944, type: 2}
     size: 3
@@ -322,8 +387,11 @@ MonoBehaviour:
   - tag: TrampolineParticle
     prefab: {fileID: 136674, guid: 53b3c4d8d6e171445a8a6f5936fedbf4, type: 2}
     size: 3
-  - tag: TrampolineParticle
-    prefab: {fileID: 136674, guid: 53b3c4d8d6e171445a8a6f5936fedbf4, type: 2}
+  - tag: RedParticle
+    prefab: {fileID: 123640, guid: 215cf078104d9454eb279d167e27f0f8, type: 2}
+    size: 3
+  - tag: GoldParticle
+    prefab: {fileID: 138338, guid: e11d822ae42df794d89d9d47f90e3a79, type: 2}
     size: 3
 --- !u!114 &114754599871955700
 MonoBehaviour:
@@ -336,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fe13a9b6cdf504ebb8705eea323bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstMenuToDisplay: 4
+  firstMenuToDisplay: 3
   menuList:
   - menu: {fileID: 0}
     type: 1

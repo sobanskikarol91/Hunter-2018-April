@@ -83,19 +83,19 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         string tag = collision.transform.tag;
         if (tag == TagManager.obstacle && collision.contacts.Length >0)
         {
             ScoreManager.instance.AddScore(collision);
             ArrowStickInObstacle(collision);
             //StartCoroutine(ExpiryColor.ExpirySpriteColor(arrowSprite.GetComponent<SpriteRenderer>()));
-            collision.gameObject.GetComponent<EnemyController>().ArrowHit();
+            IArrowHitEffect[] arrowsHitEffects = collision.gameObject.GetComponents<IArrowHitEffect>();
+            arrowsHitEffects.ForEach(t => t.ArrowHitEffect());
         }
+        else if (tag == TagManager.obstacle && collision.contacts.Length == 0)
+            Debug.LogWarning("contact length 0");
         else if(tag == TagManager.block)
-        {
             ArrowStickInObstacle(collision);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -119,7 +119,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         audioSource.Play(hitClip);
         //FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Hit, transform.position);
         hitParicle.SetActive(true);
-        EnableColliders(false);
+     //   EnableColliders(false);
     }
 
     void RestoreSpriteColor()
