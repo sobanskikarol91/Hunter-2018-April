@@ -54,7 +54,6 @@ GameObject:
   - component: {fileID: 120140702600525756}
   - component: {fileID: 114444845218772944}
   - component: {fileID: 114934887014973936}
-  - component: {fileID: 58306694323799246}
   - component: {fileID: 82716299471807360}
   - component: {fileID: 114854699370898752}
   m_Layer: 0
@@ -133,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 1458163386952052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
   - {fileID: 4031593654457956}
   - {fileID: 4088761565185144}
@@ -242,21 +241,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58306694323799246
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1458163386952052}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.75, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.59
 --- !u!82 &82716299471807360
 AudioSource:
   m_ObjectHideFlags: 1
@@ -351,10 +335,8 @@ MonoBehaviour:
   joint: {fileID: 231812306390567726}
   minDistanceToUnhookArrow: 0.05
   rb: {fileID: 50761719618253954}
-  maxTenseDistance: 2.2
+  maxTenseDistance: 2.64
   arrowSpawnPoint: {fileID: 4414910896500008}
-  arrowPrefab: {fileID: 1396378947674172, guid: e77f9a578d3a62a47b9b1893bd8ffded,
-    type: 2}
   audioSource: {fileID: 82716299471807360}
   tenseSnd:
     clip: {fileID: 8300000, guid: 433f31478c457e144b3506899ea6f5c2, type: 3}
@@ -374,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftArrowsTxt: {fileID: 0}
-  maxArrows: 25
+  maxArrows: 100
 --- !u!114 &114934887014973936
 MonoBehaviour:
   m_ObjectHideFlags: 1

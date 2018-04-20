@@ -47,7 +47,7 @@ public class BowEventManager : Singleton<BowEventManager>
 
     public void ChangeStateToOnSpawning()
     {
-        Invoke("Spawn", 0.2f);
+        Invoke("Spawn", 0.3f);
     }
 
     void Spawn()

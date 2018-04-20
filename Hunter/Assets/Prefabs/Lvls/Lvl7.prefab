@@ -2082,6 +2082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db066f1a0ddb554f843b0eaf823ba12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventName: Switch
 --- !u!114 &114665308110841948
 MonoBehaviour:
   m_ObjectHideFlags: 1
