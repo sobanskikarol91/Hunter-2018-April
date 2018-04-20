@@ -16,7 +16,6 @@ public class ForceField : MonoBehaviour
 
     void DisableForceField()
     {
-        Debug.Log("jaaa!");
         animator.SetTrigger("DisableForceField");
         collider.enabled = false;    
     }

@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] Quiver quiver;
-    [SerializeField] Text TenseTxt;
 
     List<EnemyController> enemies = new List<EnemyController>();
     List<Arrow> activeArrows = new List<Arrow>();
@@ -43,13 +41,5 @@ public class GameManager : Singleton<GameManager>
     public void PlayerGiveUp()
     {
         StartCoroutine(LvlCompleted(false));
-    }
-
-    public void SetTenseTxt(float value)
-    {
-        if (value < 0) return;
-
-        int intValue = (int)(Mathf.Round(value * 10));
-        TenseTxt.text = "Tense: " + (intValue * 10).ToString() + "%";
     }
 }

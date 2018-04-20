@@ -46,6 +46,7 @@ public class BowController : MonoBehaviour, IBow
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(0, 0, angle);
+        HUDManager.instance.SetAngleTxt(angle);
     }
 
     IEnumerator CheckPossibilityToUnhookArrow()

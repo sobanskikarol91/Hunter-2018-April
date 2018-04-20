@@ -75,7 +75,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         if (directionFromMouseToBow != Vector2.zero)
             transform.position = directionFromMouseToBow;
 
-        GameManager.instance.SetTenseTxt((directionFromMouseToBow.magnitude - startPosition.magnitude) / (bowController.MaxTenseDistance - startPosition.magnitude));
+      HUDManager.instance.SetTenseMeter((directionFromMouseToBow.magnitude - startPosition.magnitude) / (bowController.MaxTenseDistance - startPosition.magnitude));
     }
 
     public void ReleaseArrow()
