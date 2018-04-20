@@ -123,6 +123,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     {
         GameManager.instance.UnregisterArrow(this);
     }
+
     void MissObstacle()
     {
         FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Miss, transform.position);
