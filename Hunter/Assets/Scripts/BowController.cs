@@ -49,17 +49,19 @@ public class BowController : MonoBehaviour, IBow
         HUDManager.instance.SetAngleTxt(angle);
     }
 
+
     IEnumerator CheckPossibilityToUnhookArrow()
     {
-        Func<Vector2> CurrentArrowDirectionToBow = () => { return arrowSpawnPoint.position - CurrentUsingArrow.transform.position; };
-        Vector2 lastDirection = CurrentArrowDirectionToBow();
+        Vector2 previousVelocity = Vector2.zero;
+        Func<Vector2> ArrowVelocity = () =>  CurrentUsingArrow.Rb.velocity;
 
-        while (Vector2.Dot(lastDirection, CurrentArrowDirectionToBow()) > minDistanceToUnhookArrow)
+        while (ArrowVelocity().magnitude >= previousVelocity.magnitude)
         {
-            lastDirection = CurrentArrowDirectionToBow();
+            previousVelocity = ArrowVelocity();
             yield return null;
         }
 
+        CurrentUsingArrow.Rb.velocity = previousVelocity;
         DiscotectedArrowFromJoint();
     }
 

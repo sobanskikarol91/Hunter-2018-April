@@ -2980,6 +2980,11 @@ Prefab:
       propertyPath: leftArrowsTxt
       value: 
       objectReference: {fileID: 1966864713}
+    - target: {fileID: 231812306390567726, guid: b2b003ae7bbffcc4eaee251936add1e8,
+        type: 2}
+      propertyPath: m_Frequency
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2b003ae7bbffcc4eaee251936add1e8, type: 2}
   m_IsPrefabParent: 0
