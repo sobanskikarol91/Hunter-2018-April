@@ -21,9 +21,14 @@ public class MenuManager : Singleton<MenuManager>
         base.Awake();
         CreateDictionary();
         DisableMenus();
+    }
 
+    private void Start()
+    {
         if (firstMenuToDisplay != MENU.None)
             SwitchToMenu(firstMenuToDisplay);
+        else // TEST
+            BowEventManager.instance.StartGame();
     }
 
     void CreateDictionary()

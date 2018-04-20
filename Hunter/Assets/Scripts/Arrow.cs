@@ -19,12 +19,11 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 
     [HideInInspector] public BowController bowController;
 
-    private float originDistanceToBow;
+    private Vector3 startPosition;
     private Coroutine rotateCorutine;
 
     private void Awake()
     {
-
         Rb = GetComponent<Rigidbody2D>();
     }
 
@@ -66,10 +65,11 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         Vector2 currentMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 startMousePos = Camera.main.ScreenToWorldPoint(BowEventManager.StartPressPosition);
         Vector2 directionFromMouseToBow = currentMousePos - startMousePos;
-        directionFromMouseToBow = directionFromMouseToBow.ClampMagnitudeMinMax(originDistanceToBow, bowController.MaxTenseDistance);
-        Debug.Log("sd");
-        GameManager.instance.SetTenseTxt(directionFromMouseToBow.magnitude /  bowController.MaxTenseDistance);
-        transform.position = directionFromMouseToBow;
+        directionFromMouseToBow = directionFromMouseToBow.ClampMagnitudeMinMax(1.02f, bowController.MaxTenseDistance);
+        if (directionFromMouseToBow != Vector2.zero)
+            transform.position = directionFromMouseToBow;
+
+        GameManager.instance.SetTenseTxt(directionFromMouseToBow.magnitude / bowController.MaxTenseDistance);
     }
 
     public void ReleaseArrow()
@@ -88,7 +88,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     private void OnCollisionEnter2D(Collision2D collision)
     {
         string tag = collision.transform.tag;
-        if (tag == TagManager.obstacle && collision.contacts.Length >0)
+        if (tag == TagManager.obstacle && collision.contacts.Length > 0)
         {
             ScoreManager.instance.AddScore(collision);
             ArrowStickInObstacle(collision);
@@ -98,7 +98,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         }
         else if (tag == TagManager.obstacle && collision.contacts.Length == 0)
             Debug.LogWarning("contact length 0");
-        else if(tag == TagManager.block)
+        else if (tag == TagManager.block)
             ArrowStickInObstacle(collision);
     }
 
@@ -137,7 +137,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         audioSource.Play(hitClip);
         //FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Hit, transform.position);
         hitParicle.SetActive(true);
-     //   EnableColliders(false);
+        //   EnableColliders(false);
     }
 
     void RestoreSpriteColor()
@@ -150,7 +150,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         hitParicle.SetActive(false);
         trailParticle.Stop();
         EnableColliders(false);
-        originDistanceToBow = transform.position.magnitude;
+        startPosition = transform.position;
         AddEvents();
         StopAllCoroutines();
         Rb.bodyType = RigidbodyType2D.Kinematic;
