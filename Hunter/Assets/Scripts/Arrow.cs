@@ -45,9 +45,14 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         }
     }
 
-    void EnableColliders(bool state)
+    void DisableColliders()
     {
-        missCollider.enabled = hitCollider.enabled = state;
+        missCollider.enabled = hitCollider.enabled = false;
+    }
+
+    void EnableColliders()
+    {
+        missCollider.enabled = hitCollider.enabled = true;
     }
 
     public void GrabArrow()
@@ -79,7 +84,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         BowEventManager.shooting.OnExecute -= DragArrow;
         BowEventManager.shooting.OnExit -= ReleaseArrow;
 
-        EnableColliders(true);
+        EnableColliders();
         Rb.isKinematic = false;
         transform.SetParent(null);
         rotateCorutine = StartCoroutine(FlyingRotate());
@@ -139,7 +144,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         audioSource.Play(hitClip);
         //FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Hit, transform.position);
         hitParicle.SetActive(true);
-        //   EnableColliders(false);
+        Invoke("DisableColliders", 0.1f);
     }
 
     void RestoreSpriteColor()
@@ -151,7 +156,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
     {
         hitParicle.SetActive(false);
         trailParticle.Stop();
-        EnableColliders(false);
+        DisableColliders();
         startPosition = transform.position;
         AddEvents();
         StopAllCoroutines();

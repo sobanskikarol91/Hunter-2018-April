@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Animator), typeof(AudioSource))]
-public  class Obstacle : MonoBehaviour
+public class Obstacle : MonoBehaviour
 {
     protected AudioSource audioSource;
     protected Animator animator;
@@ -21,9 +21,14 @@ public  class Obstacle : MonoBehaviour
 
     protected virtual void CollisionWithArrow(Collision2D collision)
     {
-        audioSource.Play();
-        animator.SetTrigger("ArrowHit");
+        PlayAnimAndSnd();
         if (collision.contacts.Length > 0)
             ObjectPoolerManager.instance.SpawnFromPool("TrampolineParticle", collision.contacts[0].point, Quaternion.identity);
+    }
+
+    protected virtual void PlayAnimAndSnd()
+    {
+        audioSource.Play();
+        animator.SetTrigger("ArrowHit");
     }
 }
