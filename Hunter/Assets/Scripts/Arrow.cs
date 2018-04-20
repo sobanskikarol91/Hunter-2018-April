@@ -65,11 +65,12 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         Vector2 currentMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 startMousePos = Camera.main.ScreenToWorldPoint(BowEventManager.StartPressPosition);
         Vector2 directionFromMouseToBow = currentMousePos - startMousePos;
-        directionFromMouseToBow = directionFromMouseToBow.ClampMagnitudeMinMax(1.02f, bowController.MaxTenseDistance);
+        directionFromMouseToBow = directionFromMouseToBow.ClampMagnitudeMinMax(startPosition.magnitude, bowController.MaxTenseDistance);
+
         if (directionFromMouseToBow != Vector2.zero)
             transform.position = directionFromMouseToBow;
 
-        GameManager.instance.SetTenseTxt(directionFromMouseToBow.magnitude / bowController.MaxTenseDistance);
+        GameManager.instance.SetTenseTxt((directionFromMouseToBow.magnitude - startPosition.magnitude) / (bowController.MaxTenseDistance - startPosition.magnitude));
     }
 
     public void ReleaseArrow()

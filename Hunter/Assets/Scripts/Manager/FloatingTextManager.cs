@@ -7,8 +7,6 @@ public class FloatingTextManager : Singleton<FloatingTextManager>
     [SerializeField] GameObject canvas;
     Vector3 displayTxtPos;
 
-    float balisticShotDistance = 18f;
-
     public void ShowFloatingText(FLOATING_TXT type, Vector3 pos)
     {
         displayTxtPos = pos;

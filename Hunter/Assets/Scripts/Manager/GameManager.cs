@@ -47,6 +47,9 @@ public class GameManager : Singleton<GameManager>
 
     public void SetTenseTxt(float value)
     {
-        TenseTxt.text = ((int) (value * 100)).ToString() + "%";
+        if (value < 0) return;
+
+        int intValue = (int)(Mathf.Round(value * 10));
+        TenseTxt.text = "Tense: " + (intValue * 10).ToString() + "%";
     }
 }
