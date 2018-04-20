@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class MenuManager : Singleton<MenuManager>
 {
@@ -28,7 +29,10 @@ public class MenuManager : Singleton<MenuManager>
         if (firstMenuToDisplay != MENU.None)
             SwitchToMenu(firstMenuToDisplay);
         else // TEST
-            BowEventManager.instance.StartGame();
+        {
+            BowEventManager.instance.Invoke("StartGame", 0.5f);
+
+        }
     }
 
     void CreateDictionary()
