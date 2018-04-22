@@ -8,6 +8,7 @@ public class Rope : MonoBehaviour
     LineRenderer lineRenderer;
     DistanceJoint2D joint;
     AudioSource audioSource;
+ 
 
     bool isLineCut;
 
@@ -50,6 +51,7 @@ public class Rope : MonoBehaviour
                 isLineCut = true;
                 joint.connectedBody = null;
                 audioSource.Play();
+                ObjectPoolerManager.instance.SpawnFromPool("RopeParticle", hit.point, Quaternion.identity);
             }
 
 
