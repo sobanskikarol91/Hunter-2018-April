@@ -27,6 +27,24 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         Rb = GetComponent<Rigidbody2D>();
     }
 
+    void OnEnable()
+    {
+        AddEvents();
+        GameManager.instance.RegisterArrow(this);
+    }
+
+    private void OnBecameInvisible()
+    {
+        Invoke("DisableArrowAfterTime", onBecomeInvisibleTime);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.UnregisterArrow(this);
+        DeleteEvents();
+    }
+
+    #region +/- Events
     void AddEvents()
     {
         BowEventManager.shooting.OnEnter += GrabArrow;
@@ -34,6 +52,13 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         BowEventManager.shooting.OnExit += ReleaseArrow;
     }
 
+    void DeleteEvents()
+    {
+        BowEventManager.shooting.OnEnter -= GrabArrow;
+        BowEventManager.shooting.OnExecute -= DragArrow;
+        BowEventManager.shooting.OnExit -= ReleaseArrow;
+    }
+    #endregion
     IEnumerator FlyingRotate()
     {
         while (true)
@@ -114,21 +139,6 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         MissObstacle();
     }
 
-    void OnEnable()
-    {
-        GameManager.instance.RegisterArrow(this);
-    }
-
-    private void OnBecameInvisible()
-    {
-        Invoke("DisableArrowAfterTime", onBecomeInvisibleTime);
-    }
-
-    private void OnDisable()
-    {
-        GameManager.instance.UnregisterArrow(this);
-    }
-
     void MissObstacle()
     {
         FloatingTextManager.instance.ShowFloatingText(FLOATING_TXT.Miss, transform.position);
@@ -158,7 +168,6 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         trailParticle.Stop();
         DisableColliders();
         startPosition = transform.position;
-        AddEvents();
         StopAllCoroutines();
         Rb.bodyType = RigidbodyType2D.Kinematic;
         RestoreSpriteColor();

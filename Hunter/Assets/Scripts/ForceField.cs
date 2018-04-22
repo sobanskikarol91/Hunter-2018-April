@@ -1,17 +1,25 @@
 ﻿using UnityEngine;
 
-public class ForceField : MonoBehaviour 
+public class ForceField : Obstacle 
 {
     public string eventName;
 
-    Animator animator;
     new Collider2D collider;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         collider = GetComponent<Collider2D>();
-        animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
         EventManager.StartListening(eventName, DisableForceField);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening(eventName, DisableForceField);
     }
 
     void DisableForceField()

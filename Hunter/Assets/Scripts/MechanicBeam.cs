@@ -5,10 +5,14 @@ public class MechanicBeam : Obstacle
 {
     float angleMove = 90;
 
-    protected override void Start()
+    private void OnEnable()
     {
-        base.Start();
         EventManager.StartListening("Switch", Rotate);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening("Switch", Rotate);
     }
 
     void Rotate()

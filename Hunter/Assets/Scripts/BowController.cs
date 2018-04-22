@@ -9,7 +9,6 @@ public class BowController : MonoBehaviour, IBow
     public Arrow CurrentUsingArrow { get; private set; }
 
     [SerializeField] SpringJoint2D joint;
-    [SerializeField] float minDistanceToUnhookArrow = 0.1f;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float maxTenseDistance = 1f;
     [SerializeField] Transform arrowSpawnPoint;
@@ -17,13 +16,23 @@ public class BowController : MonoBehaviour, IBow
     [SerializeField] Clip tenseSnd;
     [SerializeField] Clip shotSnd;
 
-    private void Awake()
+    #region Add/Delete Events
+    private void OnEnable()
     {
         BowEventManager.shooting.OnEnter += GrabArrow;
         BowEventManager.shooting.OnExecute += DragArrow;
         BowEventManager.shooting.OnExit += ReleaseArrow;
         BowEventManager.spawnArrow.OnEnter += SpawnArrow;
     }
+
+    private void OnDisable()
+    {
+        BowEventManager.shooting.OnEnter -= GrabArrow;
+        BowEventManager.shooting.OnExecute -= DragArrow;
+        BowEventManager.shooting.OnExit -= ReleaseArrow;
+        BowEventManager.spawnArrow.OnEnter -= SpawnArrow;
+    }
+    #endregion
 
     public void DiscotectedArrowFromJoint()
     {
@@ -53,7 +62,7 @@ public class BowController : MonoBehaviour, IBow
     IEnumerator CheckPossibilityToUnhookArrow()
     {
         Vector2 previousVelocity = Vector2.zero;
-        Func<Vector2> ArrowVelocity = () =>  CurrentUsingArrow.Rb.velocity;
+        Func<Vector2> ArrowVelocity = () => CurrentUsingArrow.Rb.velocity;
 
         while (ArrowVelocity().magnitude >= previousVelocity.magnitude)
         {
