@@ -6,6 +6,7 @@ public class Obstacle : MonoBehaviour
 {
     protected AudioSource audioSource;
     protected Animator animator;
+    [SerializeField] protected string particleName = "DefaultParticle";
 
     protected virtual void Start()
     {
@@ -23,7 +24,7 @@ public class Obstacle : MonoBehaviour
     {
         PlayAnimAndSnd();
         if (collision.contacts.Length > 0)
-            ObjectPoolerManager.instance.SpawnFromPool("TrampolineParticle", collision.contacts[0].point, Quaternion.identity);
+            ObjectPoolerManager.instance.SpawnFromPool(particleName, collision.contacts[0].point, Quaternion.identity);
     }
 
     protected virtual void PlayAnimAndSnd()

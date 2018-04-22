@@ -3846,7 +3846,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -3858,7 +3858,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -3870,7 +3870,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &1592843682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4338,7 +4338,7 @@ Prefab:
     - target: {fileID: 114738204334960430, guid: 83f4d743fa71b1349be7acf76f176fb3,
         type: 2}
       propertyPath: pools.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114184265865077704, guid: 83f4d743fa71b1349be7acf76f176fb3,
         type: 2}
@@ -4498,6 +4498,21 @@ Prefab:
         type: 2}
       propertyPath: pools.Array.data[10].size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738204334960430, guid: 83f4d743fa71b1349be7acf76f176fb3,
+        type: 2}
+      propertyPath: pools.Array.data[11].tag
+      value: DefaultParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738204334960430, guid: 83f4d743fa71b1349be7acf76f176fb3,
+        type: 2}
+      propertyPath: pools.Array.data[11].prefab
+      value: 
+      objectReference: {fileID: 100672, guid: 7dc0b63f67faaf9479803bcfdff7f71e, type: 2}
+    - target: {fileID: 114738204334960430, guid: 83f4d743fa71b1349be7acf76f176fb3,
+        type: 2}
+      propertyPath: pools.Array.data[11].size
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83f4d743fa71b1349be7acf76f176fb3, type: 2}

@@ -5,10 +5,19 @@ public class EnemyController : MonoBehaviour, IObjectPooler, IArrowHitEffect
 {
     EnemyHealth enemyHealth;
 
-    private void Start()
+    void Awake()
+    {
+        enemyHealth = GetComponent<EnemyHealth>();
+    }
+
+    private void OnEnable()
     {
         GameManager.instance.RegisterEnemy(this);
-        enemyHealth = GetComponent<EnemyHealth>();
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.UnregisterEnemy(this);
     }
 
     public void PrepareObjectToSpawn()
