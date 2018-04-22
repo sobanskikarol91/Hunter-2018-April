@@ -7,12 +7,14 @@ public class Rope : MonoBehaviour
 {
     LineRenderer lineRenderer;
     DistanceJoint2D joint;
+    AudioSource audioSource;
 
     bool isLineCut;
 
     void Start()
     {
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        audioSource = GetComponent<AudioSource>();
         lineRenderer = GetComponent<LineRenderer>();
         joint = GetComponent<DistanceJoint2D>();
 
@@ -47,6 +49,7 @@ public class Rope : MonoBehaviour
                 lineRenderer.enabled = false;
                 isLineCut = true;
                 joint.connectedBody = null;
+                audioSource.Play();
             }
 
 

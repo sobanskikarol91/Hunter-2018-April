@@ -42,6 +42,7 @@ AudioMixerController:
     - 924ab3db0dffe2049bf60e683f7da6ac
     - 35e608e3428edc445b343be72d80d1b2
     - 952a3bb07ec39d54eac19f58b4758191
+    - 9966f3105c322b344b9f29ffe05ff193
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -204,6 +205,7 @@ AudioMixerGroupController:
   - {fileID: 243503986927720540}
   - {fileID: 243720286556281828}
   - {fileID: 243592872162160462}
+  - {fileID: 243880847978837548}
   m_Volume: f34a6d6e837c5964685b497f90854b88
   m_Pitch: 9b488a57a882fb440bdc9781743e21d6
   m_Effects:
@@ -529,6 +531,23 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &243880847978837548
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Rope
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 9966f3105c322b344b9f29ffe05ff193
+  m_Children: []
+  m_Volume: 5320f2abd74821a47b2d2ccb005ca0a8
+  m_Pitch: afa7bac533919b846a21c87fc2728cb8
+  m_Effects:
+  - {fileID: 244519182743527502}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &244018188230494742
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -746,6 +765,19 @@ AudioMixerEffectController:
   m_EffectID: 6161fa40c8b96fb4b8f7b9b7fa8ab122
   m_EffectName: Attenuation
   m_MixLevel: 26876582675bbce409cfe1e35e79d1cd
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244519182743527502
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: f83f4e70817ccbe4597981f9f3101fd0
+  m_EffectName: Attenuation
+  m_MixLevel: 60dbb454781b8b94da321e9d8b0046c7
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
