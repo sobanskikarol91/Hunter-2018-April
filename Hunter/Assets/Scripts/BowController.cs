@@ -23,6 +23,7 @@ public class BowController : MonoBehaviour, IBow
         BowEventManager.shooting.OnExecute += DragArrow;
         BowEventManager.shooting.OnExit += ReleaseArrow;
         BowEventManager.spawnArrow.OnEnter += SpawnArrow;
+        BowEventManager.menu.OnEnter += EraseSpawnedArrow;
     }
 
     private void OnDisable()
@@ -31,6 +32,7 @@ public class BowController : MonoBehaviour, IBow
         BowEventManager.shooting.OnExecute -= DragArrow;
         BowEventManager.shooting.OnExit -= ReleaseArrow;
         BowEventManager.spawnArrow.OnEnter -= SpawnArrow;
+        BowEventManager.menu.OnEnter -= EraseSpawnedArrow;
     }
     #endregion
 
@@ -46,6 +48,12 @@ public class BowController : MonoBehaviour, IBow
         joint.connectedBody = CurrentUsingArrow.Rb;
         CurrentUsingArrow.bowController = this;
         CurrentUsingArrow.transform.SetParent(arrowSpawnPoint);
+    }
+
+    void EraseSpawnedArrow()
+    {
+        if (CurrentUsingArrow == null) return;
+        CurrentUsingArrow.gameObject.SetActive(false);
     }
 
     void RotateBow()
