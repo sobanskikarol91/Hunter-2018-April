@@ -65,7 +65,7 @@ public class MenuManager : Singleton<MenuManager>
 
     public void LvlRestart()
     {
-        currentMenu.SetActive(false);
+        SwitchToMenu(MENU.Game);
     }
 
     public void Exit()
