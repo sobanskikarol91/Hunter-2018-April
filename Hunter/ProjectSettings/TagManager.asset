@@ -61,6 +61,9 @@ TagManager:
   - name: Machine
     uniqueID: 3247046803
     locked: 0
+  - name: Frame
+    uniqueID: 4042780819
+    locked: 0
   - name: UI
     uniqueID: 2807836481
     locked: 0
