@@ -22,7 +22,7 @@ public class ScoreManager : Singleton<ScoreManager>
         FloatingTextManager.instance.ShowFloatingText(currentScore, other.contacts[0].point);
 
         Score += currentScore;
-        scoreTxt.text = "Score: " + Score.ToString();
+        UpdateScoreHUD();
     }
 
     int CountScore(Collision2D other)
@@ -40,7 +40,12 @@ public class ScoreManager : Singleton<ScoreManager>
 
     public void ResetScore()
     {
-        Score = 0; 
-        NegativeScore = 0;
+        Score = NegativeScore = 0;
+        UpdateScoreHUD();
+    }
+
+    void UpdateScoreHUD()
+    {
+        scoreTxt.text = "Score: " + Score.ToString();
     }
 }
