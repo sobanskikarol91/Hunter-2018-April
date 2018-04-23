@@ -35,7 +35,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 
     private void OnBecameInvisible()
     {
-        Invoke("DisableArrowAfterTime", onBecomeInvisibleTime);
+        Invoke("DisableArrow", onBecomeInvisibleTime);
     }
 
     private void OnDisable()
@@ -50,6 +50,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         BowEventManager.shooting.OnEnter += GrabArrow;
         BowEventManager.shooting.OnExecute += DragArrow;
         BowEventManager.shooting.OnExit += ReleaseArrow;
+        BowEventManager.startGame.OnEnter += DisableArrow;
     }
 
     void DeleteEvents()
@@ -57,6 +58,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         BowEventManager.shooting.OnEnter -= GrabArrow;
         BowEventManager.shooting.OnExecute -= DragArrow;
         BowEventManager.shooting.OnExit -= ReleaseArrow;
+        BowEventManager.startGame.OnEnter -= DisableArrow;
     }
     #endregion
     IEnumerator FlyingRotate()
@@ -176,7 +178,7 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
         animator.SetBool("vibrations", false);
     }
 
-    void DisableArrowAfterTime()
+    void DisableArrow()
     {
         gameObject.SetActive(false);
     }

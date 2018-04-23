@@ -2,6 +2,7 @@
 
 public class BowEventManager : Singleton<BowEventManager>
 {
+    public static State startGame = new State("StartGame");
     public static State idle = new State("Idle");
     public static State spawnArrow = new State("Spawn");
     public static State shooting = new State("Shoot");
@@ -26,6 +27,7 @@ public class BowEventManager : Singleton<BowEventManager>
 
     public void StartGame()
     {
+        stateMachine.ChangeState(startGame);
         stateMachine.ChangeState(spawnArrow);
     }
 
