@@ -21,7 +21,6 @@ public class EnemyController : MonoBehaviour, IObjectPooler, IArrowHitEffect
 
     public void PrepareObjectToSpawn()
     {
-        GameManager.instance.UnregisterEnemy(this);
         GameManager.instance.RegisterEnemy(this);
     }
 
