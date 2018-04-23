@@ -4,6 +4,7 @@ public class FloatingText : MonoBehaviour, IObjectPooler
 {
     Animator animator;
     [SerializeField] float SetInactiveTime = 2f;
+
     void Awake()
     {
         animator = GetComponent<Animator>();

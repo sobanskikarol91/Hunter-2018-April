@@ -15,16 +15,21 @@ public class GameManager : Singleton<GameManager>
 
     public void UnregisterArrow(Arrow arrow)
     {
+        if (!activeArrows.Contains(arrow)) return;
+
         activeArrows.Remove(arrow);
 
-        if (activeArrows.Count == 0 && quiver.IsEmpty())
+        if (activeArrows.Count == 0 && quiver.IsEmpty() && !BowEventManager.instance.IsGameOver())
             StartCoroutine(LvlCompleted(false));
     }
 
     public void UnregisterEnemy(EnemyController enemy)
     {
+        if (!enemies.Contains(enemy)) return;
+
         enemies.Remove(enemy);
-        if (enemies.Count == 0)
+
+        if (enemies.Count == 0 && !BowEventManager.instance.IsGameOver())
             StartCoroutine(LvlCompleted(true));
     }
     #endregion

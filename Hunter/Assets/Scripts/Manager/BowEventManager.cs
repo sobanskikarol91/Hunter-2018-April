@@ -24,7 +24,7 @@ public class BowEventManager : Singleton<BowEventManager>
         stateMachine.ExecuteCurrentState();
     }
 
-   public void StartGame()
+    public void StartGame()
     {
         stateMachine.ChangeState(spawnArrow);
     }
@@ -48,6 +48,11 @@ public class BowEventManager : Singleton<BowEventManager>
     public void ChangeStateToOnSpawning()
     {
         Invoke("Spawn", 0.3f);
+    }
+
+    public bool IsGameOver()
+    {
+        return stateMachine.CurrentState == menu;
     }
 
     void Spawn()

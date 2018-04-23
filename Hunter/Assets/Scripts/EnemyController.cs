@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class EnemyController : MonoBehaviour, IObjectPooler, IArrowHitEffect
 {
@@ -12,7 +11,7 @@ public class EnemyController : MonoBehaviour, IObjectPooler, IArrowHitEffect
 
     private void OnEnable()
     {
-        GameManager.instance.RegisterEnemy(this);
+        PrepareObjectToSpawn();
     }
 
     private void OnDisable()
@@ -22,6 +21,7 @@ public class EnemyController : MonoBehaviour, IObjectPooler, IArrowHitEffect
 
     public void PrepareObjectToSpawn()
     {
+        GameManager.instance.UnregisterEnemy(this);
         GameManager.instance.RegisterEnemy(this);
     }
 
