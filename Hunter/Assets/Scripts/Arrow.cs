@@ -137,8 +137,8 @@ public class Arrow : MonoBehaviour, IBow, IObjectPooler
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == TagManager.bow || collision.gameObject.tag == TagManager.arrow) return;
-        MissObstacle();
+        //if (collision.gameObject.tag == TagManager.bow || collision.gameObject.tag == TagManager.arrow) return;
+        //MissObstacle();
     }
 
     void MissObstacle()

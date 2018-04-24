@@ -2084,7 +2084,7 @@ Animator:
   m_GameObject: {fileID: 1732617929828116}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7086cc40ef7cf1b4690a7b1b6f4c3949, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2131,6 +2131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3c8bbb5dc6e3640a926cf02d2460d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleName: DefaultParticle
 --- !u!114 &114409680722211574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2142,6 +2143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdae4112578fb34c980efb0b3c0f819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleName: DefaultParticle
 --- !u!114 &114592819864971216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2164,6 +2166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db066f1a0ddb554f843b0eaf823ba12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleName: DefaultParticle
   eventName: Switch
 --- !u!114 &114665308110841948
 MonoBehaviour:
